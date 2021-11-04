@@ -12,6 +12,7 @@ public class AIController : MonoBehaviour
     void Start()
     {
         aRPlaneManager.planesChanged += initializingAgent;
+        enabled = false;
     }
 
 
@@ -33,6 +34,19 @@ public class AIController : MonoBehaviour
                 enabled = true;
                 aRPlaneManager.planesChanged -= initializingAgent;
                 aRPlaneManager.planesChanged += checkForNewSeatTableFloor;
+                return;
+            }
+        }
+
+        foreach (ARPlane arPlane in args.updated)
+        {
+            if (arPlane.classification.Equals(PlaneClassification.Floor))
+            {
+                transform.position = arPlane.transform.position;
+                enabled = true;
+                aRPlaneManager.planesChanged -= initializingAgent;
+                aRPlaneManager.planesChanged += checkForNewSeatTableFloor;
+                return;
             }
         }
     }

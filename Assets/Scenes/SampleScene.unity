@@ -543,7 +543,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aRPlaneManager: {fileID: 1408130682}
-  navMeshAgent: {fileID: 1930906892}
 --- !u!4 &1170658457
 Transform:
   m_ObjectHideFlags: 0
@@ -911,7 +910,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1930906891
 Transform:
   m_ObjectHideFlags: 0

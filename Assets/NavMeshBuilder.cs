@@ -10,13 +10,13 @@ public class NavMeshBuilder : MonoBehaviour
 {
     //public GameObject planeToAddNavMesh;
     public ARPlaneManager aRPlaneManager;
-    public NavMeshAgent navMeshAgent;
 
     // Start is called before the first frame update
     void Start()
     {
         //NavMeshSurface nms = planeToAddNavMesh.AddComponent(typeof(NavMeshSurface)) as NavMeshSurface;
         //nms.BuildNavMesh();
+        
         aRPlaneManager.planesChanged += updateNavMesh;
     }
 
