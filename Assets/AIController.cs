@@ -11,19 +11,22 @@ public class AIController : MonoBehaviour
     private List<ARPlane> listOfARPlanesWithNavmesh;
     private NavMeshAgent agent;
     private bool searchNewLocation;
+    private ARPlane currentPlaneMagoIsPositioned;
     // Start is called before the first frame update
     void Awake()
     {
-        aRPlaneManager.planesChanged += InitializingAgent;
+        //aRPlaneManager.planesChanged += InitializingAgent;
         enabled = false;
         listOfARPlanesWithNavmesh = new List<ARPlane>();
         agent = GetComponent<NavMeshAgent>();
         searchNewLocation = false;
+        currentPlaneMagoIsPositioned = null;
     }
 
     private void Start()
     {
         StartCoroutine(WaitBeforeSearchingNewPositionCoroutine(30));
+        StartCoroutine(WaitThenInitializeMago(30));
     }
 
 
@@ -47,7 +50,8 @@ public class AIController : MonoBehaviour
         //Print the time of when the function is first called.
         //Debug.Log("Started Coroutine at timestamp : " + Time.time);
         searchNewLocation = false;
-        generateRandomDestination();
+        if (currentPlaneMagoIsPositioned!=null)
+            generateRandomDestination();
         //yield on a new YieldInstruction that waits for 5 seconds.
         yield return new WaitForSeconds(waitInSeconds);
         searchNewLocation = true;
@@ -59,15 +63,15 @@ public class AIController : MonoBehaviour
     {
         //Get random walkable plane
         int randomIndex = Random.Range(0, listOfARPlanesWithNavmesh.Count);
-        ARPlane arPlane = listOfARPlanesWithNavmesh[randomIndex];
+        currentPlaneMagoIsPositioned = listOfARPlanesWithNavmesh[randomIndex];
 
-        float maxDistance = GetFarestBoundry(arPlane);
+        float maxDistance = GetFarestBoundry(currentPlaneMagoIsPositioned);
 
         bool nexPositionFound = false;
         while (!nexPositionFound)
         {
             // Get Random Point inside Sphere which position is center, radius is maxDistance
-            Vector3 randomPos = Random.insideUnitSphere * maxDistance + arPlane.center;
+            Vector3 randomPos = Random.insideUnitSphere * maxDistance + currentPlaneMagoIsPositioned.center;
 
             NavMeshHit hit; // NavMesh Sampling Info Container
 
@@ -88,6 +92,47 @@ public class AIController : MonoBehaviour
         */
     }
 
+    IEnumerator WaitThenInitializeMago(int waitInSeconds)
+    {
+
+        yield return new WaitForSeconds(waitInSeconds);
+        InitializeAgent();
+    }
+    private void InitializeAgent()
+    {
+        
+        foreach (ARPlane arPlane in aRPlaneManager.trackables)
+        {
+            initializeStartPlaneForMago(arPlane);
+            checkForFloorSeatTableAndAddToList(arPlane);
+        }
+        /*
+        ARPlane firstARFloor = null;
+        foreach (ARPlane arPlane in added)
+        {
+            setFirstFloor(arPlane, firstARFloor);
+            checkForFloorSeatTableAndAddToList(arPlane);
+        }
+
+        foreach (ARPlane arPlane in updated)
+        {
+            setFirstFloor(arPlane, firstARFloor);
+            checkForFloorSeatTableAndAddToList(arPlane);
+            checkIfClassificationChanged(arPlane);
+        }
+
+        foreach (ARPlane arPlane in removed)
+        {
+            checkForFloorSeatTableAndRemoveFromList(arPlane);
+        }
+
+        transform.position = firstARFloor.transform.position;
+        enabled = true;
+        */
+        //aRPlaneManager.planesChanged -= InitializingAgent;
+        aRPlaneManager.planesChanged += checkForNewSeatTableFloor;
+    }
+
     private float GetFarestBoundry(ARPlane arPlane)
     {
         float maxRadius = 0;
@@ -99,42 +144,26 @@ public class AIController : MonoBehaviour
         return maxRadius;
     }
 
-    private void InitializingAgent(ARPlanesChangedEventArgs args)
+    /*private void InitializingAgent(ARPlanesChangedEventArgs args)
     {
-        ARPlane firstARFloor=null;
-        foreach (ARPlane arPlane in args.added)
-        {
-            setFirstFloor(arPlane, firstARFloor);
-            checkForFloorSeatTableAndAddToList(arPlane);
-        }
-
-        foreach (ARPlane arPlane in args.updated)
-        {
-            setFirstFloor(arPlane, firstARFloor);
-            checkForFloorSeatTableAndAddToList(arPlane);
-        }
-
-        foreach (ARPlane arPlane in args.removed)
-        {
-            checkForFloorSeatTableAndRemoveFromList(arPlane);
-        }
-
-        transform.position = firstARFloor.transform.position;
-        enabled = true;
-        aRPlaneManager.planesChanged -= InitializingAgent;
-        aRPlaneManager.planesChanged += checkForNewSeatTableFloor;
-    }
+        StartCoroutine(WaitThenInitializeMago(30));
+    }*/
 
     private void checkForNewSeatTableFloor(ARPlanesChangedEventArgs args)
     {
         foreach (ARPlane arPlane in args.added)
         {
+            if (currentPlaneMagoIsPositioned == null)
+                initializeStartPlaneForMago(arPlane);
             checkForFloorSeatTableAndAddToList(arPlane);
         }
 
         foreach (ARPlane arPlane in args.updated)
         {
+            if (currentPlaneMagoIsPositioned == null)
+                initializeStartPlaneForMago(arPlane);
             checkForFloorSeatTableAndAddToList(arPlane);
+            checkIfClassificationChanged(arPlane);
         }
 
         foreach (ARPlane arPlane in args.removed)
@@ -149,22 +178,31 @@ public class AIController : MonoBehaviour
 
     private void checkForFloorSeatTableAndAddToList(ARPlane arPlane)
     {
-        if (arPlane.classification.Equals(PlaneClassification.Seat) || arPlane.classification.Equals(PlaneClassification.Table) || arPlane.classification.Equals(PlaneClassification.Floor))
+        if (!listOfARPlanesWithNavmesh.Contains(arPlane) && (arPlane.classification.Equals(PlaneClassification.Seat) || arPlane.classification.Equals(PlaneClassification.Table) || arPlane.classification.Equals(PlaneClassification.Floor)))
             listOfARPlanesWithNavmesh.Add(arPlane);
     }
 
     private void checkForFloorSeatTableAndRemoveFromList(ARPlane arPlane)
     {
-        if (listOfARPlanesWithNavmesh.Contains(arPlane) && (arPlane.classification.Equals(PlaneClassification.Seat) || arPlane.classification.Equals(PlaneClassification.Table) || arPlane.classification.Equals(PlaneClassification.Floor)))
+        if (listOfARPlanesWithNavmesh.Contains(arPlane))
+        {
+            listOfARPlanesWithNavmesh.Remove(arPlane);
+            if (currentPlaneMagoIsPositioned.Equals(arPlane))
+                currentPlaneMagoIsPositioned = null;
+        }
+    }
+    private void checkIfClassificationChanged(ARPlane arPlane)
+    {
+        if (listOfARPlanesWithNavmesh.Contains(arPlane) && !(arPlane.classification.Equals(PlaneClassification.Seat) || arPlane.classification.Equals(PlaneClassification.Table) || arPlane.classification.Equals(PlaneClassification.Floor)))
             listOfARPlanesWithNavmesh.Remove(arPlane);
     }
 
-    private void setFirstFloor(ARPlane arPlane, ARPlane firstARFloor)
+    private void initializeStartPlaneForMago(ARPlane arPlane)
     {
         if (arPlane.classification.Equals(PlaneClassification.Floor))
         {
-            if (firstARFloor == null)
-                firstARFloor = arPlane;
+            if (currentPlaneMagoIsPositioned == null)
+                currentPlaneMagoIsPositioned = arPlane;
         }
     }
 
