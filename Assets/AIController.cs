@@ -57,12 +57,17 @@ public class AIController : MonoBehaviour
             generateRandomDestination();
         nexPositionFound = false;
         //yield on a new YieldInstruction that waits for 5 seconds.
-        yield return new WaitUntil(() => nexPositionFound == true);
+        //yield return new WaitUntil(() => nexPositionFound == true);
+        while (!nexPositionFound)
+        {
+            yield return null;
+        }
+        Debug.Log("GetNewNavMeshPositionCoroutine3");
         yield return new WaitForSeconds(waitInSeconds);
         searchNewLocation = true;
         //After we have waited 5 seconds print the time again.
         //Debug.Log("Finished Coroutine at timestamp : " + Time.time);
-        Debug.Log("GetNewNavMeshPositionCoroutine2");
+        Debug.Log("GetNewNavMeshPositionCoroutine4");
     }
 
     private void generateRandomDestination()
@@ -78,13 +83,14 @@ public class AIController : MonoBehaviour
             Vector3 randomPos = Random.insideUnitSphere * maxDistance + currentPlaneMagoIsPositioned.center;
 
             NavMeshHit hit; // NavMesh Sampling Info Container
-            Debug.Log("GetNewNavMeshPositionCoroutine3" + randomPos +" maxDistance: "+ maxDistance + " center: "+ currentPlaneMagoIsPositioned.center);
+            Debug.Log("GetNewNavMeshPositionCoroutine2" + randomPos +" maxDistance: "+ maxDistance + " center: "+ currentPlaneMagoIsPositioned.center);
             // from randomPos find a nearest point on NavMesh surface in range of maxDistance
             if (NavMesh.SamplePosition(randomPos, out hit, maxDistance, NavMesh.AllAreas) && hit.position != agent.gameObject.transform.position)
             {
-                Debug.Log("GetNewNavMeshPositionCoroutine3" + hit.position);
+                Debug.Log("GetNewNavMeshPositionCoroutine2" + hit.position);
                 agent.SetDestination(hit.position);
                 nexPositionFound = true;
+                Debug.Log("GetNewNavMeshPositionCoroutine2.5 "+ nexPositionFound);
             }
         }
         
