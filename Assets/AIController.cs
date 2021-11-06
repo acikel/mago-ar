@@ -16,6 +16,11 @@ public class AIController : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        
+    }
+
+    private void Start()
+    {
         nexPositionFound = false;
         //aRPlaneManager.planesChanged += InitializingAgent;
         enabled = false;
@@ -23,10 +28,6 @@ public class AIController : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         searchNewLocation = false;
         currentPlaneMagoIsPositioned = null;
-    }
-
-    private void Start()
-    {
         StartCoroutine(WaitBeforeSearchingNewPositionCoroutine(30));
         StartCoroutine(WaitThenInitializeMago(30));
     }
@@ -50,7 +51,7 @@ public class AIController : MonoBehaviour
     IEnumerator GetNewNavMeshPositionCoroutine(int waitInSeconds)
     {
         //Print the time of when the function is first called.
-        //Debug.Log("Started Coroutine at timestamp : " + Time.time);
+        Debug.Log("GetNewNavMeshPositionCoroutine1");
         searchNewLocation = false;
         if (currentPlaneMagoIsPositioned!=null)
             generateRandomDestination();
@@ -61,6 +62,7 @@ public class AIController : MonoBehaviour
         searchNewLocation = true;
         //After we have waited 5 seconds print the time again.
         //Debug.Log("Finished Coroutine at timestamp : " + Time.time);
+        Debug.Log("GetNewNavMeshPositionCoroutine2");
     }
 
     private void generateRandomDestination()
