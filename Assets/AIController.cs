@@ -12,9 +12,11 @@ public class AIController : MonoBehaviour
     private NavMeshAgent agent;
     private bool searchNewLocation;
     private ARPlane currentPlaneMagoIsPositioned;
+    private bool nexPositionFound;
     // Start is called before the first frame update
     void Awake()
     {
+        nexPositionFound = false;
         //aRPlaneManager.planesChanged += InitializingAgent;
         enabled = false;
         listOfARPlanesWithNavmesh = new List<ARPlane>();
@@ -52,7 +54,9 @@ public class AIController : MonoBehaviour
         searchNewLocation = false;
         if (currentPlaneMagoIsPositioned!=null)
             generateRandomDestination();
+        nexPositionFound = false;
         //yield on a new YieldInstruction that waits for 5 seconds.
+        yield return new WaitUntil(() => nexPositionFound == true);
         yield return new WaitForSeconds(waitInSeconds);
         searchNewLocation = true;
         //After we have waited 5 seconds print the time again.
@@ -66,8 +70,6 @@ public class AIController : MonoBehaviour
         currentPlaneMagoIsPositioned = listOfARPlanesWithNavmesh[randomIndex];
 
         float maxDistance = GetFarestBoundry(currentPlaneMagoIsPositioned);
-
-        bool nexPositionFound = false;
         while (!nexPositionFound)
         {
             // Get Random Point inside Sphere which position is center, radius is maxDistance
@@ -202,7 +204,12 @@ public class AIController : MonoBehaviour
         if (arPlane.classification.Equals(PlaneClassification.Floor))
         {
             if (currentPlaneMagoIsPositioned == null)
+            {
+                if (!enabled)
+                    enabled = true;
                 currentPlaneMagoIsPositioned = arPlane;
+                transform.position = currentPlaneMagoIsPositioned.transform.position;
+            }
         }
     }
 
