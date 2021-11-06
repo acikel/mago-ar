@@ -13,6 +13,7 @@ public class AIController : MonoBehaviour
     private bool searchNewLocation;
     private ARPlane currentPlaneMagoIsPositioned;
     private bool nexPositionFound;
+    private List<Renderer> renderersOfMago;
     // Start is called before the first frame update
     void Awake()
     {
@@ -21,14 +22,21 @@ public class AIController : MonoBehaviour
 
     private void Start()
     {
+        renderersOfMago = new List<Renderer>();
+
+        renderersOfMago.AddRange(transform.GetChild(0).gameObject.GetComponentsInChildren<Renderer>());
+        foreach (Renderer renderer in renderersOfMago)
+        {
+            renderer.enabled = false;
+        }
         nexPositionFound = false;
         //aRPlaneManager.planesChanged += InitializingAgent;
         enabled = false;
         listOfARPlanesWithNavmesh = new List<ARPlane>();
         agent = GetComponent<NavMeshAgent>();
-        searchNewLocation = false;
+        //searchNewLocation = false;
         currentPlaneMagoIsPositioned = null;
-        StartCoroutine(WaitBeforeSearchingNewPositionCoroutine(30));
+        StartCoroutine(WaitBeforeSearchingNewPositionCoroutine(60));
         StartCoroutine(WaitThenInitializeMago(30));
     }
 
@@ -214,8 +222,14 @@ public class AIController : MonoBehaviour
         {
             if (currentPlaneMagoIsPositioned == null)
             {
-                if (!enabled)
-                    enabled = true;
+                if (renderersOfMago!=null)
+                {
+                    foreach (Renderer renderer in renderersOfMago)
+                    {
+                        renderer.enabled = true;
+                    }
+                    renderersOfMago = null;
+                }
                 currentPlaneMagoIsPositioned = arPlane;
                 transform.position = currentPlaneMagoIsPositioned.transform.position;
             }
