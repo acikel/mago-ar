@@ -78,10 +78,11 @@ public class AIController : MonoBehaviour
             Vector3 randomPos = Random.insideUnitSphere * maxDistance + currentPlaneMagoIsPositioned.center;
 
             NavMeshHit hit; // NavMesh Sampling Info Container
-
+            Debug.Log("GetNewNavMeshPositionCoroutine3" + randomPos);
             // from randomPos find a nearest point on NavMesh surface in range of maxDistance
             if (NavMesh.SamplePosition(randomPos, out hit, maxDistance, NavMesh.AllAreas) && hit.position != agent.gameObject.transform.position)
             {
+                Debug.Log("GetNewNavMeshPositionCoroutine3" + hit.position);
                 agent.SetDestination(hit.position);
                 nexPositionFound = true;
             }
