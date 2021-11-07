@@ -110,7 +110,7 @@ public class AIController : MonoBehaviour
         int randomIndex = Random.Range(0, listOfARPlanesWithNavmesh.Count);
         currentPlaneMagoIsPositioned = listOfARPlanesWithNavmesh[randomIndex];
 
-        float maxDistance = GetFarestBoundry(currentPlaneMagoIsPositioned);
+        float maxDistance = GetClosest(currentPlaneMagoIsPositioned);
         while (!nexPositionFound)
         {
             // Get Random Point inside Sphere which position is center, radius is maxDistance
@@ -187,6 +187,17 @@ public class AIController : MonoBehaviour
                 maxRadius = boundary.magnitude;
         }
         return maxRadius;
+    }
+
+    private float GetClosest(ARPlane arPlane)
+    {
+        float minRadius = float.PositiveInfinity;
+        foreach (Vector2 boundary in arPlane.boundary)
+        {
+            if (boundary.magnitude < minRadius)
+                minRadius = boundary.magnitude;
+        }
+        return minRadius;
     }
 
     /*private void InitializingAgent(ARPlanesChangedEventArgs args)
