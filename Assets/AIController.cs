@@ -60,7 +60,7 @@ public class AIController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("update called");
+        Debug.Log("update called"+searchNewLocation);
         if (searchNewLocation) 
         {
             Debug.Log("WaitBeforeSearchingNewPositionCoroutine3");
