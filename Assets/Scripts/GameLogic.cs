@@ -44,7 +44,7 @@ public class GameLogic : MonoBehaviour
         StartCoroutine(waitThenEnableSleepTime(15));
     }
 
-    private IEnumerator waitThenEnableSleepTime(int waitInSeconds)
+    IEnumerator waitThenEnableSleepTime(int waitInSeconds)
     {
         Debug.Log("Update Method Game Logic4");
         yield return new WaitForSeconds(waitInSeconds);
@@ -61,7 +61,7 @@ public class GameLogic : MonoBehaviour
     void Update()
     {
         Debug.Log("Update Method Game Logic1: "+ uiPlaneIsOverlaying);
-        if (System.DateTime.Now.Hour == sleepTimeHours && System.DateTime.Now.Minute == sleepTimeMinutes)
+        if (!sleepTimeMinutesUI.text.Equals("")&&(System.DateTime.Now.Hour == sleepTimeHours && System.DateTime.Now.Minute == sleepTimeMinutes))
         {
             disableGameUI();
             teethBrushingCanvas.enabled = true;
