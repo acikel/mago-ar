@@ -26,11 +26,11 @@ public class AIController : MonoBehaviour
         renderersOfMago = new List<GameObject>();
 
         //renderersOfMago.AddRange(transform.GetChild(0).gameObject.GetComponentsInChildren<Renderer>());
-        foreach (Transform transform in transform.GetChild(0).gameObject.transform)
+        foreach (Transform childTransform in transform.GetChild(0).gameObject.transform)
         {
-
-            transform.gameObject.SetActive(false);
-            renderersOfMago.Add(transform.gameObject);
+            Debug.Log("Start Method child name: "+ childTransform.name);
+            childTransform.gameObject.SetActive(false);
+            renderersOfMago.Add(childTransform.gameObject);
         }
         nexPositionFound = false;
         //aRPlaneManager.planesChanged += InitializingAgent;
