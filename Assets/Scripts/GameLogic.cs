@@ -57,6 +57,7 @@ public class GameLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("Update Method Game Logic1: "+ uiPlaneIsOverlaying);
         if (System.DateTime.Now.Hour == sleepTimeHours && System.DateTime.Now.Minute == sleepTimeMinutes)
         {
             disableGameUI();
@@ -100,12 +101,14 @@ public class GameLogic : MonoBehaviour
 
     private void disableGameUI()
     {
+        Debug.Log("Update Method Game Logic2");
         gameUICanvas.enabled = false;
         uiPlaneIsOverlaying = true;
     }
 
     private void enableGameUI()
     {
+        Debug.Log("Update Method Game Logic3");
         gameUICanvas.enabled = true;
         uiPlaneIsOverlaying = false;
     }
