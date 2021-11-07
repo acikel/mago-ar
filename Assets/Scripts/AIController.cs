@@ -20,6 +20,9 @@ public class AIController : MonoBehaviour
         
     }
 
+    public delegate void OnAIPlacedIntoScene();
+    public static OnAIPlacedIntoScene onAIPlacedIntoScene;
+
     private void Start()
     {
         //Debug.Log("Start Method");
@@ -61,7 +64,7 @@ public class AIController : MonoBehaviour
     void Update()
     {
         Debug.Log("update called"+searchNewLocation);
-        if (searchNewLocation) 
+        if (searchNewLocation && !GameLogic.uiPlaneIsOverlaying) 
         {
             Debug.Log("WaitBeforeSearchingNewPositionCoroutine3");
             StartCoroutine(GetNewNavMeshPositionCoroutine(10));
@@ -111,8 +114,14 @@ public class AIController : MonoBehaviour
         //currentPlaneMagoIsPositioned = listOfARPlanesWithNavmesh[randomIndex];
 
         float maxDistance = GetFarestBoundry(currentPlaneMagoIsPositioned);
-        while (!nexPositionFound)
+        int counter = 0;
+        while (!nexPositionFound && !GameLogic.uiPlaneIsOverlaying)
         {
+            if (counter == 25)
+            {
+                counter = 0;
+                maxDistance = GetClosestBoundry(currentPlaneMagoIsPositioned);
+            }
             // Get Random Point inside Sphere which position is center, radius is maxDistance
             Vector3 randomPos = Random.insideUnitSphere * maxDistance + currentPlaneMagoIsPositioned.center;
 
@@ -126,6 +135,7 @@ public class AIController : MonoBehaviour
                 nexPositionFound = true;
                 Debug.Log("GetNewNavMeshPositionCoroutine2.5 "+ nexPositionFound);
             }
+            counter++;
         }
         
         /*
@@ -189,7 +199,7 @@ public class AIController : MonoBehaviour
         return maxRadius;
     }
 
-    private float GetClosest(ARPlane arPlane)
+    private float GetClosestBoundry(ARPlane arPlane)
     {
         float minRadius = float.PositiveInfinity;
         foreach (Vector2 boundary in arPlane.boundary)
@@ -266,6 +276,7 @@ public class AIController : MonoBehaviour
                     foreach (GameObject gameObject in renderersOfMago)
                     {
                         gameObject.SetActive(true);
+                        onAIPlacedIntoScene?.Invoke();
                     }
                     renderersOfMago = null;
                 }
