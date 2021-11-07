@@ -229,7 +229,7 @@ public class AIController : MonoBehaviour
         if (listOfARPlanesWithNavmesh.Contains(arPlane))
         {
             listOfARPlanesWithNavmesh.Remove(arPlane);
-            if (currentPlaneMagoIsPositioned.Equals(arPlane))
+            if (currentPlaneMagoIsPositioned!=null && currentPlaneMagoIsPositioned.Equals(arPlane))
                 currentPlaneMagoIsPositioned = null;
         }
     }
