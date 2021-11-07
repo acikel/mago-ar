@@ -68,7 +68,7 @@ public class AIController : MonoBehaviour
         if (searchNewLocation && !GameLogic.uiPlaneIsOverlaying) 
         {
             //Debug.Log("WaitBeforeSearchingNewPositionCoroutine3");
-            Debug.Log("Update1");
+            Debug.Log("Update Method1");
             coroutineNewAIPosition =GetNewNavMeshPositionCoroutine(10);
             StartCoroutine(coroutineNewAIPosition);
         }
@@ -77,10 +77,10 @@ public class AIController : MonoBehaviour
             if (coroutineNewAIPosition != null)
             {
                 StopCoroutine(coroutineNewAIPosition);
-                Debug.Log("Update2");
+                Debug.Log("Update Method2");
             }
             searchNewLocation = false;
-            Debug.Log("Update3");
+            Debug.Log("Update Method3");
         }
     }
 
@@ -96,7 +96,7 @@ public class AIController : MonoBehaviour
     IEnumerator GetNewNavMeshPositionCoroutine(int waitInSeconds)
     {
         //Print the time of when the function is first called.
-        Debug.Log("Update4");
+        Debug.Log("Update Method4");
         //Debug.Log("GetNewNavMeshPositionCoroutine1");
         //Debug.Log("WaitBeforeSearchingNewPositionCoroutine4"+ currentPlaneMagoIsPositioned);
         searchNewLocation = false;
