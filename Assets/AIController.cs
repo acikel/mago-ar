@@ -172,6 +172,11 @@ public class AIController : MonoBehaviour
 
     private void checkForNewSeatTableFloor(ARPlanesChangedEventArgs args)
     {
+        foreach (ARPlane arPlane in args.removed)
+        {
+            checkForFloorSeatTableAndRemoveFromList(arPlane);
+        }
+
         foreach (ARPlane arPlane in args.added)
         {
             if (currentPlaneMagoIsPositioned == null)
@@ -187,10 +192,7 @@ public class AIController : MonoBehaviour
             checkIfClassificationChanged(arPlane);
         }
 
-        foreach (ARPlane arPlane in args.removed)
-        {
-            checkForFloorSeatTableAndRemoveFromList(arPlane);
-        }
+        
     }
 
 
@@ -234,6 +236,7 @@ public class AIController : MonoBehaviour
                 }
                 currentPlaneMagoIsPositioned = arPlane;
                 transform.position = currentPlaneMagoIsPositioned.transform.position;
+                Debug.Log("Initialized plane: " + arPlane.name);
             }
         }
     }
