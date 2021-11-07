@@ -60,9 +60,10 @@ public class AIController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("update called");
         if (searchNewLocation) 
         {
-            Debug.Log("WaitBeforeSearchingNewPositionCoroutine2");
+            Debug.Log("WaitBeforeSearchingNewPositionCoroutine3");
             StartCoroutine(GetNewNavMeshPositionCoroutine(10));
         }
     }
@@ -72,13 +73,14 @@ public class AIController : MonoBehaviour
         Debug.Log("WaitBeforeSearchingNewPositionCoroutine1");
         yield return new WaitForSeconds(waitInSeconds);
         searchNewLocation = true;
+        Debug.Log("WaitBeforeSearchingNewPositionCoroutine2");
     }
 
     IEnumerator GetNewNavMeshPositionCoroutine(int waitInSeconds)
     {
         //Print the time of when the function is first called.
         Debug.Log("GetNewNavMeshPositionCoroutine1");
-        Debug.Log("WaitBeforeSearchingNewPositionCoroutine3");
+        Debug.Log("WaitBeforeSearchingNewPositionCoroutine4");
         searchNewLocation = false;
         if (currentPlaneMagoIsPositioned!=null)
             generateRandomDestination();
