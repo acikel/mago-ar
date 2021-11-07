@@ -45,7 +45,7 @@ public class AIController : MonoBehaviour
         */
         nexPositionFound = false;
         //aRPlaneManager.planesChanged += InitializingAgent;
-        enabled = false;
+        //enabled = false;
         listOfARPlanesWithNavmesh = new List<ARPlane>();
         agent = GetComponent<NavMeshAgent>();
         //searchNewLocation = false;
