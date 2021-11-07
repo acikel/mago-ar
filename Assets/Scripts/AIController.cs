@@ -14,6 +14,7 @@ public class AIController : MonoBehaviour
     private ARPlane currentPlaneMagoIsPositioned;
     private bool nexPositionFound;
     private List<GameObject> renderersOfMago;
+    private IEnumerator coroutineNewAIPosition;
     // Start is called before the first frame update
     void Awake()
     {
@@ -64,10 +65,16 @@ public class AIController : MonoBehaviour
     void Update()
     {
         //Debug.Log("update called"+searchNewLocation);
-        if (searchNewLocation && !GameLogic.uiPlaneIsOverlaying) 
+        if (searchNewLocation ) 
         {
             //Debug.Log("WaitBeforeSearchingNewPositionCoroutine3");
-            StartCoroutine(GetNewNavMeshPositionCoroutine(10));
+            coroutineNewAIPosition=GetNewNavMeshPositionCoroutine(10);
+            StartCoroutine(coroutineNewAIPosition);
+        }
+        if (GameLogic.uiPlaneIsOverlaying)
+        {
+            if(coroutineNewAIPosition!=null)
+                StopCoroutine(coroutineNewAIPosition);
         }
     }
 
@@ -115,7 +122,7 @@ public class AIController : MonoBehaviour
 
         float maxDistance = GetFarestBoundry(currentPlaneMagoIsPositioned);
         int counter = 0;
-        while (!nexPositionFound && !GameLogic.uiPlaneIsOverlaying)
+        while (!nexPositionFound)
         {
             if (counter == 25)
             {
