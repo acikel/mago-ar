@@ -41,10 +41,10 @@ public class GameLogic : MonoBehaviour
 
     private void AIWasPlaced()
     {
-        StartCoroutine(waitThenEnableSleepTime(15));
+        waitThenEnableSleepTime(15);
     }
 
-    IEnumerator waitThenEnableSleepTime(int waitInSeconds)
+    void waitThenEnableSleepTime(int waitInSeconds)
     {
         Debug.Log("Update Method Game Logic4");
         //yield return new WaitForSeconds(waitInSeconds);
