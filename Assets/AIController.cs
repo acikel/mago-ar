@@ -80,11 +80,16 @@ public class AIController : MonoBehaviour
     {
         //Print the time of when the function is first called.
         Debug.Log("GetNewNavMeshPositionCoroutine1");
-        Debug.Log("WaitBeforeSearchingNewPositionCoroutine4");
+        Debug.Log("WaitBeforeSearchingNewPositionCoroutine4"+ currentPlaneMagoIsPositioned);
         searchNewLocation = false;
+        nexPositionFound = false;
         if (currentPlaneMagoIsPositioned!=null)
             generateRandomDestination();
-        nexPositionFound = false;
+        else
+        {
+            nexPositionFound = true;
+        }
+        
         //yield on a new YieldInstruction that waits for 5 seconds.
         //yield return new WaitUntil(() => nexPositionFound == true);
         while (!nexPositionFound)
