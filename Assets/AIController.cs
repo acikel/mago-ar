@@ -22,6 +22,7 @@ public class AIController : MonoBehaviour
 
     private void Start()
     {
+        Debug.Log("Start Method");
         renderersOfMago = new List<GameObject>();
 
         //renderersOfMago.AddRange(transform.GetChild(0).gameObject.GetComponentsInChildren<Renderer>());
@@ -39,7 +40,9 @@ public class AIController : MonoBehaviour
         //searchNewLocation = false;
         currentPlaneMagoIsPositioned = null;
         StartCoroutine(WaitBeforeSearchingNewPositionCoroutine(10));
+        Debug.Log("Start Method1");
         StartCoroutine(WaitThenInitializeMago(10));
+        Debug.Log("Start Method2");
     }
 
 
