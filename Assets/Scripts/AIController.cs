@@ -65,7 +65,7 @@ public class AIController : MonoBehaviour
     void Update()
     {
         //Debug.Log("update called"+searchNewLocation);
-        if (searchNewLocation ) 
+        if (searchNewLocation && !GameLogic.uiPlaneIsOverlaying) 
         {
             //Debug.Log("WaitBeforeSearchingNewPositionCoroutine3");
             coroutineNewAIPosition=GetNewNavMeshPositionCoroutine(10);
@@ -73,11 +73,13 @@ public class AIController : MonoBehaviour
         }
         if (GameLogic.uiPlaneIsOverlaying)
         {
-            if(coroutineNewAIPosition!=null)
+            if (coroutineNewAIPosition != null)
                 StopCoroutine(coroutineNewAIPosition);
+            searchNewLocation = false;
         }
     }
 
+    
     IEnumerator WaitBeforeSearchingNewPositionCoroutine(int waitInSeconds)
     {
         //Debug.Log("WaitBeforeSearchingNewPositionCoroutine1");
