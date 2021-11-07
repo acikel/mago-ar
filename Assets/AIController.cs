@@ -107,10 +107,10 @@ public class AIController : MonoBehaviour
     private void generateRandomDestination()
     {
         //Get random walkable plane
-        int randomIndex = Random.Range(0, listOfARPlanesWithNavmesh.Count);
-        currentPlaneMagoIsPositioned = listOfARPlanesWithNavmesh[randomIndex];
+        //int randomIndex = Random.Range(0, listOfARPlanesWithNavmesh.Count);
+        //currentPlaneMagoIsPositioned = listOfARPlanesWithNavmesh[randomIndex];
 
-        float maxDistance = GetClosest(currentPlaneMagoIsPositioned);
+        float maxDistance = GetFarestBoundry(currentPlaneMagoIsPositioned);
         while (!nexPositionFound)
         {
             // Get Random Point inside Sphere which position is center, radius is maxDistance
