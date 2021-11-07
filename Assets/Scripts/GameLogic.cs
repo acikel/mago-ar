@@ -46,12 +46,15 @@ public class GameLogic : MonoBehaviour
 
     private IEnumerator waitThenEnableSleepTime(int waitInSeconds)
     {
+        Debug.Log("Update Method Game Logic4");
         yield return new WaitForSeconds(waitInSeconds);
+        Debug.Log("Update Method Game Logic5");
         sleepTimeMinutesUI.text = "";
         sleepTimeHoursUI.text = "";
         disableGameUI();
         sleepTimeCanvas.enabled = true;
         AIController.onAIPlacedIntoScene -= AIWasPlaced;
+        Debug.Log("Update Method Game Logic6");
     }
 
     // Update is called once per frame
