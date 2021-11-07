@@ -47,7 +47,7 @@ public class GameLogic : MonoBehaviour
     IEnumerator waitThenEnableSleepTime(int waitInSeconds)
     {
         Debug.Log("Update Method Game Logic4");
-        yield return new WaitForSeconds(waitInSeconds);
+        //yield return new WaitForSeconds(waitInSeconds);
         Debug.Log("Update Method Game Logic5");
         sleepTimeMinutesUI.text = "";
         sleepTimeHoursUI.text = "";
