@@ -22,15 +22,15 @@ public class AIController : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("Start Method");
+        //Debug.Log("Start Method");
         renderersOfMago = new List<GameObject>();
 
         //renderersOfMago.AddRange(transform.GetChild(0).gameObject.GetComponentsInChildren<Renderer>());
-        Debug.Log("Start Method child name1: " + transform.GetChild(0).gameObject.name);
+        //Debug.Log("Start Method child name1: " + transform.GetChild(0).gameObject.name);
         Transform parentTransform = transform.GetChild(0).gameObject.transform;
         for(int i =0; i< parentTransform.childCount; i++)
         {
-            Debug.Log("Start Method child name2: " + parentTransform.GetChild(i).gameObject.name);
+            //Debug.Log("Start Method child name2: " + parentTransform.GetChild(i).gameObject.name);
             parentTransform.GetChild(i).gameObject.SetActive(false);
             renderersOfMago.Add(parentTransform.GetChild(i).gameObject);
         }
@@ -51,9 +51,9 @@ public class AIController : MonoBehaviour
         //searchNewLocation = false;
         currentPlaneMagoIsPositioned = null;
         StartCoroutine(WaitBeforeSearchingNewPositionCoroutine(10));
-        Debug.Log("Start Method1");
+        //Debug.Log("Start Method1");
         StartCoroutine(WaitThenInitializeMago(10));
-        Debug.Log("Start Method2");
+        //Debug.Log("Start Method2");
     }
 
 
@@ -61,13 +61,15 @@ public class AIController : MonoBehaviour
     void Update()
     {
         if (searchNewLocation) 
-        { 
+        {
+            Debug.Log("WaitBeforeSearchingNewPositionCoroutine2");
             StartCoroutine(GetNewNavMeshPositionCoroutine(10));
         }
     }
 
     IEnumerator WaitBeforeSearchingNewPositionCoroutine(int waitInSeconds)
     {
+        Debug.Log("WaitBeforeSearchingNewPositionCoroutine1");
         yield return new WaitForSeconds(waitInSeconds);
         searchNewLocation = true;
     }
@@ -76,6 +78,7 @@ public class AIController : MonoBehaviour
     {
         //Print the time of when the function is first called.
         Debug.Log("GetNewNavMeshPositionCoroutine1");
+        Debug.Log("WaitBeforeSearchingNewPositionCoroutine3");
         searchNewLocation = false;
         if (currentPlaneMagoIsPositioned!=null)
             generateRandomDestination();
