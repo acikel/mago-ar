@@ -8,9 +8,11 @@ public class TeethBrushingController : MonoBehaviour
     public delegate void OnTimerFinished();
     public static OnTimerFinished onTimerFinished;
 
-    public float timeRemaining = 3;
+    private const int timeForCountdownInSeconds = 180;
+    public float timeRemainingInSeconds = timeForCountdownInSeconds;
     private bool timerIsRunning=false;
     public Text timeText;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -22,16 +24,16 @@ public class TeethBrushingController : MonoBehaviour
     {
         if (timerIsRunning)
         {
-            if (timeRemaining > 0)
+            if (timeRemainingInSeconds > 0)
             {
-                timeRemaining -= Time.deltaTime;
-                DisplayTime(timeRemaining);
+                timeRemainingInSeconds -= Time.deltaTime;
+                DisplayTime(timeRemainingInSeconds);
             }
             else
             {
                 //Debug.Log("Time has run out!");
-                timeRemaining = 3;
                 timerIsRunning = false;
+                timeRemainingInSeconds = timeForCountdownInSeconds;
                 onTimerFinished?.Invoke();
             }
         }
@@ -40,14 +42,14 @@ public class TeethBrushingController : MonoBehaviour
     private void OnEnable()
     {
         //Starts timer.
-        timeRemaining = 3;
+        timeRemainingInSeconds = timeForCountdownInSeconds;
         timerIsRunning = true;
-        DisplayTime(timeRemaining);
+        DisplayTime(timeRemainingInSeconds);
     }
 
     private void OnDisable()
     {
-        timeRemaining = 3;
+        timeRemainingInSeconds = timeForCountdownInSeconds;
         timerIsRunning = false;
     }
 
