@@ -79,7 +79,7 @@ public class AIController : MonoBehaviour
                 StopCoroutine(coroutineNewAIPosition);
                 Debug.Log("Update Method2");
             }
-            searchNewLocation = false;
+            //searchNewLocation = false;
             Debug.Log("Update Method3");
         }
     }
