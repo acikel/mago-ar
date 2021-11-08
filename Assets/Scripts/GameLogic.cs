@@ -51,8 +51,8 @@ public class GameLogic : MonoBehaviour
         Debug.Log("Update Method Game Logic5");
         sleepTimeMinutesUI.text = "";
         sleepTimeHoursUI.text = "";
-        //disableGameUI();
-        //sleepTimeCanvas.enabled = true;
+        disableGameUI();
+        sleepTimeCanvas.enabled = true;
         AIController.onAIPlacedIntoScene -= AIWasPlaced;
         Debug.Log("Update Method Game Logic6");
     }
