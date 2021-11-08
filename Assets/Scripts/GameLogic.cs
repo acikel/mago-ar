@@ -24,6 +24,10 @@ public class GameLogic : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        blackScreenCanvas.enabled = false;
+        teethBrushingCanvas.enabled = false;
+        sleepTimeCanvas.enabled = false;
+
         enableGameUI();
         uiPlaneIsOverlaying = false;
         magoIsSleeping = false;
@@ -41,13 +45,14 @@ public class GameLogic : MonoBehaviour
 
     private void AIWasPlaced()
     {
-        waitThenEnableSleepTime(15);
+        StartCoroutine(waitThenEnableSleepTime(15));
     }
 
-    void waitThenEnableSleepTime(int waitInSeconds)
+    IEnumerator waitThenEnableSleepTime(int waitInSeconds)
     {
+        uiPlaneIsOverlaying = true;
         Debug.Log("Update Method Game Logic4");
-        //yield return new WaitForSeconds(waitInSeconds);
+        yield return new WaitForSeconds(waitInSeconds);
         Debug.Log("Update Method Game Logic5");
         sleepTimeMinutesUI.text = "";
         sleepTimeHoursUI.text = "";
