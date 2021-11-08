@@ -52,7 +52,7 @@ public class GameLogic : MonoBehaviour
         sleepTimeMinutesUI.text = "";
         sleepTimeHoursUI.text = "";
         disableGameUI();
-        sleepTimeCanvas.enabled = true;
+        //sleepTimeCanvas.enabled = true;
         AIController.onAIPlacedIntoScene -= AIWasPlaced;
         Debug.Log("Update Method Game Logic6");
     }

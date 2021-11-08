@@ -291,9 +291,9 @@ public class AIController : MonoBehaviour
                     foreach (GameObject gameObject in renderersOfMago)
                     {
                         gameObject.SetActive(true);
-                        StartCoroutine(waitThenInvokeAIPlacedIntoSceneEvent(15));
                     }
                     renderersOfMago = null;
+                    StartCoroutine(waitThenInvokeAIPlacedIntoSceneEvent(15));
                 }
                 currentPlaneMagoIsPositioned = arPlane;
                 transform.position = currentPlaneMagoIsPositioned.transform.position;
