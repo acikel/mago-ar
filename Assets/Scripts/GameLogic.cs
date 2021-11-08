@@ -82,6 +82,7 @@ public class GameLogic : MonoBehaviour
 
     public void sleepTimeOKButton()
     {
+        Debug.Log("OK button clicked");
         if (checkIfTimeWasEntered())
         {
             if (sleepTimeHoursUI.text.Equals(""))
