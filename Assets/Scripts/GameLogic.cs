@@ -9,10 +9,10 @@ public class GameLogic : MonoBehaviour
     //checks if any other ui then gameUICanvas is overlaying game screen so ai wont move in this state
     //is checked by AIcontroller to move AI only if this variable is false (then no UI overlay is done exept the gameUI)
     public static bool uiPlaneIsOverlaying;
-    public Canvas gameUICanvas;
-    public Canvas blackScreenCanvas;
-    public Canvas teethBrushingCanvas;
-    public Canvas sleepTimeCanvas;
+    public GameObject gameUICanvas;
+    public GameObject blackScreenCanvas;
+    public GameObject teethBrushingCanvas;
+    public GameObject sleepTimeCanvas;
 
     public InputField sleepTimeMinutesUI;
     public InputField sleepTimeHoursUI;
@@ -24,9 +24,9 @@ public class GameLogic : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        blackScreenCanvas.enabled = false;
-        teethBrushingCanvas.enabled = false;
-        sleepTimeCanvas.enabled = false;
+        blackScreenCanvas.SetActive(false);
+        teethBrushingCanvas.SetActive(false);
+        sleepTimeCanvas.SetActive(false);
 
         enableGameUI();
         uiPlaneIsOverlaying = false;
@@ -38,8 +38,8 @@ public class GameLogic : MonoBehaviour
     private void OnTeethBrushingTimerFinished()
     {
         //enableGameUI();
-        teethBrushingCanvas.enabled = false;
-        blackScreenCanvas.enabled = true;
+        teethBrushingCanvas.SetActive(false);
+        blackScreenCanvas.SetActive(true);
         magoIsSleeping = true;
     }
 
@@ -52,7 +52,7 @@ public class GameLogic : MonoBehaviour
         sleepTimeMinutesUI.text = "";
         sleepTimeHoursUI.text = "";
         disableGameUI();
-        sleepTimeCanvas.enabled = true;
+        sleepTimeCanvas.SetActive(true);
         AIController.onAIPlacedIntoScene -= AIWasPlaced;
         Debug.Log("Update Method Game Logic6");
     }
@@ -70,11 +70,11 @@ public class GameLogic : MonoBehaviour
         if (!sleepTimeMinutesUI.text.Equals("")&&(System.DateTime.Now.Hour == sleepTimeHours && System.DateTime.Now.Minute == sleepTimeMinutes))
         {
             disableGameUI();
-            teethBrushingCanvas.enabled = true;
+            teethBrushingCanvas.SetActive(true);
         }
         if(magoIsSleeping && System.DateTime.Now.Hour == (sleepTimeHours+9%23))
         {
-            blackScreenCanvas.enabled = false;
+            blackScreenCanvas.SetActive(false);
             magoIsSleeping = false;
             enableGameUI();
         }
@@ -94,7 +94,7 @@ public class GameLogic : MonoBehaviour
             else
                 sleepTimeMinutes = int.Parse(sleepTimeMinutesUI.text);
 
-            sleepTimeCanvas.enabled = false;
+            sleepTimeCanvas.SetActive(false);
             enableGameUI();
         }
         
@@ -111,14 +111,14 @@ public class GameLogic : MonoBehaviour
     private void disableGameUI()
     {
         Debug.Log("Update Method Game Logic2");
-        gameUICanvas.enabled = false;
+        gameUICanvas.SetActive(false);
         uiPlaneIsOverlaying = true;
     }
 
     private void enableGameUI()
     {
         Debug.Log("Update Method Game Logic3");
-        gameUICanvas.enabled = true;
+        gameUICanvas.SetActive(true);
         uiPlaneIsOverlaying = false;
     }
 }
