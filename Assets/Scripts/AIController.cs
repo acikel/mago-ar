@@ -64,7 +64,7 @@ public class AIController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log("update called"+searchNewLocation);
+        Debug.Log("update called: "+searchNewLocation +" uPlane: "+ GameLogic.uiPlaneIsOverlaying);
         if (searchNewLocation && !GameLogic.uiPlaneIsOverlaying) 
         {
             //Debug.Log("WaitBeforeSearchingNewPositionCoroutine3");
