@@ -358,7 +358,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 4, y: -22}
-  m_SizeDelta: {x: 105.53, y: 68.2}
+  m_SizeDelta: {x: 547.5, y: 68.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &191186611
 MonoBehaviour:
@@ -387,7 +387,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 63
-    m_Alignment: 0
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -740,7 +740,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &393590356
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2920,7 +2920,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 719db60935944f3459bf6302798b2c0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeRemaining: 3
+  timeRemainingInSeconds: 3
   timeText: {fileID: 191186611}
 --- !u!1 &1865645775
 GameObject:
