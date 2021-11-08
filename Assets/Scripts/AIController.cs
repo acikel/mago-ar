@@ -79,7 +79,7 @@ public class AIController : MonoBehaviour
                 StopCoroutine(coroutineNewAIPosition);
                 Debug.Log("Update Method2");
             }
-            //searchNewLocation = false;
+            searchNewLocation = false;
             Debug.Log("Update Method3");
         }
     }
@@ -307,5 +307,6 @@ public class AIController : MonoBehaviour
     {
         yield return new WaitForSeconds(waitInSeconds);
         onAIPlacedIntoScene?.Invoke();
+        searchNewLocation = true;
     }
 }
