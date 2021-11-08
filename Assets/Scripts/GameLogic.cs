@@ -23,7 +23,11 @@ public class GameLogic : MonoBehaviour
 
     public delegate void OnSleepTimeOKButton();
     public static OnSleepTimeOKButton onSleepTimeOKButton;
-    
+
+    public GameObject foodGameObject;
+    public Button foodButton;
+    public GameObject mago;
+
 
     // Start is called before the first frame update
     void Start()
@@ -105,6 +109,17 @@ public class GameLogic : MonoBehaviour
         }
         
     }
+
+
+    public void gameUIFoodButton()
+    {
+        if (mago.GetComponent<Renderer>().isVisible)
+        {
+            Vector3 position3D = new Vector3(foodButton.transform.position.x, foodButton.transform.position.y - 4, foodButton.transform.position.z);
+            Instantiate(foodGameObject, position3D, Quaternion.identity);
+        }
+    }
+
 
     private bool checkIfTimeWasEntered()
     {
