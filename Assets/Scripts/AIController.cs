@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -47,6 +48,7 @@ public class AIController : MonoBehaviour
             renderersOfMago.Add(childTransform.gameObject);
         }
         */
+        GameLogic.onSleepTimeOKButton += OnSleepTimeOkButtonPressed;
         nexPositionFound = false;
         //aRPlaneManager.planesChanged += InitializingAgent;
         //enabled = false;
@@ -58,6 +60,11 @@ public class AIController : MonoBehaviour
         //Debug.Log("Start Method1");
         StartCoroutine(WaitThenInitializeMago(10));
         //Debug.Log("Start Method2");
+    }
+
+    private void OnSleepTimeOkButtonPressed()
+    {
+        searchNewLocation = true;
     }
 
 
@@ -138,7 +145,7 @@ public class AIController : MonoBehaviour
                 maxDistance = GetClosestBoundry(currentPlaneMagoIsPositioned);
             }
             // Get Random Point inside Sphere which position is center, radius is maxDistance
-            Vector3 randomPos = Random.insideUnitSphere * maxDistance + currentPlaneMagoIsPositioned.center;
+            Vector3 randomPos = UnityEngine.Random.insideUnitSphere * maxDistance + currentPlaneMagoIsPositioned.center;
 
             NavMeshHit hit; // NavMesh Sampling Info Container
             //Debug.Log("GetNewNavMeshPositionCoroutine2" + randomPos +" maxDistance: "+ maxDistance + " center: "+ currentPlaneMagoIsPositioned.center);
@@ -307,6 +314,5 @@ public class AIController : MonoBehaviour
     {
         yield return new WaitForSeconds(waitInSeconds);
         onAIPlacedIntoScene?.Invoke();
-        searchNewLocation = true;
     }
 }

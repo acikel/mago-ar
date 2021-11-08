@@ -21,6 +21,10 @@ public class GameLogic : MonoBehaviour
     private int sleepTimeHours;
     private bool magoIsSleeping;
 
+    public delegate void OnSleepTimeOKButton();
+    public static OnSleepTimeOKButton onSleepTimeOKButton;
+    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -97,6 +101,7 @@ public class GameLogic : MonoBehaviour
 
             sleepTimeCanvas.SetActive(false);
             enableGameUI();
+            onSleepTimeOKButton?.Invoke();
         }
         
     }
