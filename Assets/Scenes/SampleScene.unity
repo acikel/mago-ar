@@ -141,7 +141,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &99415719
 RectTransform:
   m_ObjectHideFlags: 0
@@ -357,7 +357,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 4, y: 15}
+  m_AnchoredPosition: {x: 4, y: -22}
   m_SizeDelta: {x: 105.53, y: 68.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &191186611
@@ -2840,6 +2840,7 @@ GameObject:
   - component: {fileID: 1787514098}
   - component: {fileID: 1787514100}
   - component: {fileID: 1787514099}
+  - component: {fileID: 1787514101}
   m_Layer: 5
   m_Name: TeethBrushingPanel
   m_TagString: Untagged
@@ -2907,6 +2908,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1787514097}
   m_CullTransparentMesh: 1
+--- !u!114 &1787514101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1787514097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 719db60935944f3459bf6302798b2c0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeRemaining: 3
+  timeText: {fileID: 191186611}
 --- !u!1 &1865645775
 GameObject:
   m_ObjectHideFlags: 0
