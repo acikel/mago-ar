@@ -45,14 +45,9 @@ public class GameLogic : MonoBehaviour
 
     private void AIWasPlaced()
     {
-        StartCoroutine(waitThenEnableSleepTime(15));
-    }
-
-    IEnumerator waitThenEnableSleepTime(int waitInSeconds)
-    {
-        uiPlaneIsOverlaying = true;
+        //StartCoroutine(waitThenEnableSleepTime(15));
         Debug.Log("Update Method Game Logic4");
-        yield return new WaitForSeconds(waitInSeconds);
+        //yield return new WaitForSeconds(waitInSeconds);
         Debug.Log("Update Method Game Logic5");
         sleepTimeMinutesUI.text = "";
         sleepTimeHoursUI.text = "";
@@ -61,6 +56,12 @@ public class GameLogic : MonoBehaviour
         AIController.onAIPlacedIntoScene -= AIWasPlaced;
         Debug.Log("Update Method Game Logic6");
     }
+
+    /*IEnumerator waitThenEnableSleepTime(int waitInSeconds)
+    {
+       
+        
+    }*/
 
     // Update is called once per frame
     void Update()

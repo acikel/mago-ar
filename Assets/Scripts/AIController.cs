@@ -291,7 +291,7 @@ public class AIController : MonoBehaviour
                     foreach (GameObject gameObject in renderersOfMago)
                     {
                         gameObject.SetActive(true);
-                        onAIPlacedIntoScene?.Invoke();
+                        StartCoroutine(waitThenInvokeAIPlacedIntoSceneEvent(15));
                     }
                     renderersOfMago = null;
                 }
@@ -302,5 +302,9 @@ public class AIController : MonoBehaviour
         }
     }
 
-    
+    IEnumerator waitThenInvokeAIPlacedIntoSceneEvent(int waitInSeconds)
+    {
+        yield return new WaitForSeconds(waitInSeconds);
+        onAIPlacedIntoScene?.Invoke();
+    }
 }
