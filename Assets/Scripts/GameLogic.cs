@@ -28,6 +28,7 @@ public class GameLogic : MonoBehaviour
     public Button foodButton;
     public GameObject mago;
 
+    public Button sleepTimeOkButton;
 
     // Start is called before the first frame update
     void Start()
@@ -41,6 +42,9 @@ public class GameLogic : MonoBehaviour
         magoIsSleeping = false;
         AIController.onAIPlacedIntoScene += AIWasPlaced;
         TeethBrushingController.onTimerFinished += OnTeethBrushingTimerFinished;
+
+        foodButton.onClick.AddListener(gameUIFoodButton);
+        sleepTimeOkButton.onClick.AddListener(sleepTimeOKButton);
     }
 
     private void OnTeethBrushingTimerFinished()
