@@ -81,8 +81,8 @@ public class AIController : MonoBehaviour
             //coroutineNewAIPosition =GetNewNavMeshPositionCoroutine(10);
             //StartCoroutine(coroutineNewAIPosition);
             //GetNewNavMeshPositionCoroutine();
-            //GetNewNavMeshPositionCoroutine(15);
-            generateRandomDestination();
+            StartCoroutine(GetNewNavMeshPositionCoroutine(15));
+            //generateRandomDestination();
         }
         /*if (GameLogic.uiPlaneIsOverlaying)
         {
