@@ -139,7 +139,7 @@ public class AIController : MonoBehaviour
         int counter = 0;
         while (!nexPositionFound)
         {
-            if (counter == 25)
+            if (counter == 10)
             {
                 counter = 0;
                 maxDistance = GetClosestBoundry(currentPlaneMagoIsPositioned);
