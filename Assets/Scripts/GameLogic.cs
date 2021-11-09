@@ -54,15 +54,15 @@ public class GameLogic : MonoBehaviour
     private void AIWasPlaced()
     {
         //StartCoroutine(waitThenEnableSleepTime(15));
-        Debug.Log("Update Method Game Logic4");
+        //Debug.Log("Update Method Game Logic4");
         //yield return new WaitForSeconds(waitInSeconds);
-        Debug.Log("Update Method Game Logic5");
+        //Debug.Log("Update Method Game Logic5");
         sleepTimeMinutesUI.text = "";
         sleepTimeHoursUI.text = "";
         disableGameUI();
         sleepTimeCanvas.SetActive(true);
         AIController.onAIPlacedIntoScene -= AIWasPlaced;
-        Debug.Log("Update Method Game Logic6");
+        //Debug.Log("Update Method Game Logic6");
     }
 
     /*IEnumerator waitThenEnableSleepTime(int waitInSeconds)
@@ -74,7 +74,7 @@ public class GameLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Update Method Game Logic1: "+ uiPlaneIsOverlaying);
+        //Debug.Log("Update Method Game Logic1: "+ uiPlaneIsOverlaying);
         if (!sleepTimeMinutesUI.text.Equals("")&&(System.DateTime.Now.Hour == sleepTimeHours && System.DateTime.Now.Minute == sleepTimeMinutes))
         {
             disableGameUI();
@@ -90,7 +90,7 @@ public class GameLogic : MonoBehaviour
 
     public void sleepTimeOKButton()
     {
-        Debug.Log("OK button clicked");
+        //Debug.Log("OK button clicked");
         if (checkIfTimeWasEntered())
         {
             if (sleepTimeHoursUI.text.Equals(""))
@@ -133,14 +133,14 @@ public class GameLogic : MonoBehaviour
 
     private void disableGameUI()
     {
-        Debug.Log("Update Method Game Logic2");
+        //Debug.Log("Update Method Game Logic2");
         gameUICanvas.SetActive(false);
         uiPlaneIsOverlaying = true;
     }
 
     private void enableGameUI()
     {
-        Debug.Log("Update Method Game Logic3");
+        //Debug.Log("Update Method Game Logic3");
         gameUICanvas.SetActive(true);
         uiPlaneIsOverlaying = false;
     }

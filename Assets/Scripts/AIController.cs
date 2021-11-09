@@ -71,11 +71,11 @@ public class AIController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("update called: "+searchNewLocation +" uPlane: "+ GameLogic.uiPlaneIsOverlaying);
+        //Debug.Log("update called: "+searchNewLocation +" uPlane: "+ GameLogic.uiPlaneIsOverlaying);
         if (searchNewLocation && !GameLogic.uiPlaneIsOverlaying) 
         {
             //Debug.Log("WaitBeforeSearchingNewPositionCoroutine3");
-            Debug.Log("Update Method1");
+            //Debug.Log("Update Method1");
             coroutineNewAIPosition =GetNewNavMeshPositionCoroutine(10);
             StartCoroutine(coroutineNewAIPosition);
         }
@@ -84,10 +84,10 @@ public class AIController : MonoBehaviour
             if (coroutineNewAIPosition != null)
             {
                 StopCoroutine(coroutineNewAIPosition);
-                Debug.Log("Update Method2");
+                //Debug.Log("Update Method2");
             }
             searchNewLocation = false;
-            Debug.Log("Update Method3");
+            //Debug.Log("Update Method3");
         }
     }
 
@@ -103,7 +103,7 @@ public class AIController : MonoBehaviour
     IEnumerator GetNewNavMeshPositionCoroutine(int waitInSeconds)
     {
         //Print the time of when the function is first called.
-        Debug.Log("Update Method4");
+        //Debug.Log("Update Method4");
         //Debug.Log("GetNewNavMeshPositionCoroutine1");
         //Debug.Log("WaitBeforeSearchingNewPositionCoroutine4"+ currentPlaneMagoIsPositioned);
         searchNewLocation = false;
