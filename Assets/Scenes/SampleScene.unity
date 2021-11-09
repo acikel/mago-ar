@@ -2090,8 +2090,10 @@ MonoBehaviour:
   sleepTimeHoursUI: {fileID: 1104632371}
   foodGameObject: {fileID: 919132149155446097, guid: 742a26ea6d345f44391c2d8c485a6252, type: 3}
   foodButton: {fileID: 1129942985}
-  mago: {fileID: 350657851}
+  magoRenderer: {fileID: 350657851}
+  mago: {fileID: 1930906890}
   sleepTimeOkButton: {fileID: 957588980}
+  aICamera: {fileID: 1409164230}
 --- !u!4 &1330025530
 Transform:
   m_ObjectHideFlags: 0
