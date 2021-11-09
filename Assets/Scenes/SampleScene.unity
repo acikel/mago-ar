@@ -2091,7 +2091,7 @@ MonoBehaviour:
   foodGameObject: {fileID: 919132149155446097, guid: 742a26ea6d345f44391c2d8c485a6252, type: 3}
   foodButton: {fileID: 1129942985}
   mago: {fileID: 350657851}
-  sleepTimeOkButton: {fileID: 0}
+  sleepTimeOkButton: {fileID: 957588980}
 --- !u!4 &1330025530
 Transform:
   m_ObjectHideFlags: 0
