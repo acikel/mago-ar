@@ -140,6 +140,7 @@ public class AIController : MonoBehaviour
 
     IEnumerator GetNewNavMeshPositionCoroutine(int waitInSeconds)
     {
+        searchNewLocation = false;
         yield return new WaitForSeconds(waitInSeconds);
         generateRandomDestination();
     }
@@ -157,7 +158,7 @@ public class AIController : MonoBehaviour
         //if (currentPlaneMagoIsPositioned == null)
         //    return;
 
-        searchNewLocation = false;
+        
         nexPositionFound = false;
         float maxDistance = GetFarestBoundry(currentPlaneMagoIsPositioned);
         int counter = 0;
