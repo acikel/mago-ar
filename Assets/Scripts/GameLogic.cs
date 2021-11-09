@@ -31,6 +31,7 @@ public class GameLogic : MonoBehaviour
 
     public Button sleepTimeOkButton;
 
+    public Camera aICamera;
 
     // Start is called before the first frame update
     void Start()
@@ -125,10 +126,10 @@ public class GameLogic : MonoBehaviour
         if (!uiPlaneIsOverlaying && magoRenderer.GetComponent<Renderer>().isVisible)
         {
             Debug.Log("seeing mago2");
-            mago.transform.LookAt(Camera.main.transform);
+            mago.transform.LookAt(aICamera.transform);
             Debug.Log("seeing mago3");
             //Vector3 position3D = Camera.main.WorldToScreenPoint(new Vector3(foodButton.transform.position.x, foodButton.transform.position.y - 4, foodButton.transform.position.z));
-            Vector3 position3D = new Vector3(foodButton.transform.position.x, foodButton.transform.position.y - 4, foodButton.transform.position.z);
+            Vector3 position3D = aICamera.WorldToScreenPoint(new Vector3(foodButton.transform.position.x, foodButton.transform.position.y - 4, foodButton.transform.position.z));
             Instantiate(foodGameObject, position3D, Quaternion.identity);
         }
     }
