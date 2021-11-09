@@ -300,7 +300,7 @@ public class AIController : MonoBehaviour
                         gameObject.SetActive(true);
                     }
                     renderersOfMago = null;
-                    StartCoroutine(waitThenInvokeAIPlacedIntoSceneEvent(15));
+                    StartCoroutine(waitThenInvokeAIPlacedIntoSceneEvent(10));
                     //onAIPlacedIntoScene?.Invoke();
                 }
                 currentPlaneMagoIsPositioned = arPlane;
