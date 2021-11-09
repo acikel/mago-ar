@@ -33,6 +33,9 @@ public class GameLogic : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        foodButton.onClick.AddListener(gameUIFoodButton);
+        sleepTimeOkButton.onClick.AddListener(sleepTimeOKButton);
+
         blackScreenCanvas.SetActive(false);
         teethBrushingCanvas.SetActive(false);
         sleepTimeCanvas.SetActive(false);
@@ -43,8 +46,7 @@ public class GameLogic : MonoBehaviour
         AIController.onAIPlacedIntoScene += AIWasPlaced;
         TeethBrushingController.onTimerFinished += OnTeethBrushingTimerFinished;
 
-        foodButton.onClick.AddListener(gameUIFoodButton);
-        sleepTimeOkButton.onClick.AddListener(sleepTimeOKButton);
+        
     }
 
     private void OnTeethBrushingTimerFinished()
