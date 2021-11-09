@@ -146,6 +146,7 @@ public class AIController : MonoBehaviour
         //int randomIndex = Random.Range(0, listOfARPlanesWithNavmesh.Count);
         //currentPlaneMagoIsPositioned = listOfARPlanesWithNavmesh[randomIndex];
         searchNewLocation = false;
+        nexPositionFound = false;
         float maxDistance = GetFarestBoundry(currentPlaneMagoIsPositioned);
         int counter = 0;
         while (!nexPositionFound)
