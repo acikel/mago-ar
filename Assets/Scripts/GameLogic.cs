@@ -113,9 +113,10 @@ public class GameLogic : MonoBehaviour
 
     public void gameUIFoodButton()
     {
-        if (mago.GetComponent<Renderer>().isVisible)
+        Debug.Log("seeing mago2");
+        if (!uiPlaneIsOverlaying && mago.GetComponent<Renderer>().isVisible)
         {
-            Debug.Log("seeing mago");
+            Debug.Log("seeing mago2");
             Vector3 position3D = Camera.main.WorldToScreenPoint(new Vector3(foodButton.transform.position.x, foodButton.transform.position.y - 4, foodButton.transform.position.z));
             Instantiate(foodGameObject, position3D, Quaternion.identity);
         }
