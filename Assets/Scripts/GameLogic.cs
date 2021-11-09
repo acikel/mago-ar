@@ -129,7 +129,7 @@ public class GameLogic : MonoBehaviour
         {
             Debug.Log("seeing mago2");
 
-            mago.transform.LookAt(aICamera.transform);
+            //mago.transform.LookAt(aICamera.transform);
             Debug.Log("seeing mago3");
             //Vector3 position3D = Camera.main.WorldToScreenPoint(new Vector3(foodButton.transform.position.x, foodButton.transform.position.y - 4, foodButton.transform.position.z));
             Vector3 position3D = aICamera.WorldToScreenPoint(new Vector3(foodButton.transform.position.x, foodButton.transform.position.y - 4, foodButton.transform.position.z));
