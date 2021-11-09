@@ -72,8 +72,8 @@ public class AIController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("update called: "+ agent.remainingDistance + " searchNewLocation: " + searchNewLocation + " renderersOfMago[0].activeSelf: "+ renderersOfMago[0].activeSelf + " GameLogic.uiPlaneIsOverlaying: "+ GameLogic.uiPlaneIsOverlaying);
-        if (agent.remainingDistance < 0.1 && searchNewLocation && renderersOfMago[0].activeSelf && !GameLogic.uiPlaneIsOverlaying) 
+        Debug.Log("update called: "+ agent.remainingDistance + " searchNewLocation: " + searchNewLocation + " GameLogic.uiPlaneIsOverlaying: "+ GameLogic.uiPlaneIsOverlaying);
+        if (agent.remainingDistance < 0.1 && searchNewLocation && !GameLogic.uiPlaneIsOverlaying) 
         {
             //Debug.Log("WaitBeforeSearchingNewPositionCoroutine3");
             //Debug.Log("Update Method1");
@@ -105,6 +105,7 @@ public class AIController : MonoBehaviour
         //Debug.Log("WaitBeforeSearchingNewPositionCoroutine2");
     }
 
+    /*
     IEnumerator GetNewNavMeshPositionCoroutine(int waitInSeconds)
     {
         //Print the time of when the function is first called.
@@ -133,7 +134,7 @@ public class AIController : MonoBehaviour
         //After we have waited 5 seconds print the time again.
         //Debug.Log("Finished Coroutine at timestamp : " + Time.time);
         //Debug.Log("GetNewNavMeshPositionCoroutine4");
-    }
+    }*/
 
     private IEnumerator activateAIPlacedEvents(int waitInSeconds)
     {
