@@ -141,7 +141,7 @@ public class GameLogic : MonoBehaviour
             //mago.transform.LookAt(aICamera.transform);
             
             //Vector3 position3D = Camera.main.WorldToScreenPoint(new Vector3(foodButton.transform.position.x, foodButton.transform.position.y - 4, foodButton.transform.position.z));
-            //Vector3 position3D = aICamera.WorldToScreenPoint(new Vector3(foodButton.transform.position.x, foodButton.transform.position.y - 4, foodButton.transform.position.z));
+            Vector3 position3D = aICamera.WorldToScreenPoint(new Vector3(foodButton.transform.position.x, foodButton.transform.position.y - 4, foodButton.transform.position.z));
             Debug.Log("seeing mago3");
             //Instantiate(foodGameObject, position3D, Quaternion.identity);
             Instantiate(foodGameObject, touchPos, Quaternion.identity);
