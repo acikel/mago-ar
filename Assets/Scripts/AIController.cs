@@ -165,7 +165,7 @@ public class AIController : MonoBehaviour
             {
                 //Debug.Log("GetNewNavMeshPositionCoroutine2" + hit.position);
                 agent.SetDestination(hit.position);
-                //nexPositionFound = true;
+                nexPositionFound = true;
                 //Debug.Log("GetNewNavMeshPositionCoroutine2.5 "+ nexPositionFound);
                 if (!hourWasSet)
                 {
