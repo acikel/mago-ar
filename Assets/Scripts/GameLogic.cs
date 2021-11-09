@@ -119,7 +119,7 @@ public class GameLogic : MonoBehaviour
 
     public void gameUIFoodButton()
     {
-        Debug.Log("seeing mago1");
+        Debug.Log("seeing mago1: "+ mago + " renderer: "+ mago.GetComponent<Renderer>());
         if (!uiPlaneIsOverlaying && mago.GetComponent<Renderer>().isVisible)
         {
             Debug.Log("seeing mago2");
