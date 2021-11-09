@@ -73,8 +73,9 @@ public class AIController : MonoBehaviour
     void Update()
     {
         Debug.Log("update called: "+ agent.remainingDistance + " searchNewLocation: " + searchNewLocation + " GameLogic.uiPlaneIsOverlaying: "+ GameLogic.uiPlaneIsOverlaying);
-        if (!GameLogic.magoIsBeeingFeeded && agent.remainingDistance < 0.1 && searchNewLocation && !GameLogic.uiPlaneIsOverlaying) 
-        {
+        //if (!GameLogic.magoIsBeeingFeeded && agent.remainingDistance < 0.1 && searchNewLocation && !GameLogic.uiPlaneIsOverlaying)
+          if (agent.remainingDistance < 0.1 && searchNewLocation && !GameLogic.uiPlaneIsOverlaying)
+            {
             //Debug.Log("WaitBeforeSearchingNewPositionCoroutine3");
             //Debug.Log("Update Method1");
             //coroutineNewAIPosition =GetNewNavMeshPositionCoroutine(10);
