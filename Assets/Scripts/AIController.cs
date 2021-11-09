@@ -73,14 +73,14 @@ public class AIController : MonoBehaviour
     void Update()
     {
         Debug.Log("update called: "+ agent.remainingDistance + " searchNewLocation: " + searchNewLocation + " GameLogic.uiPlaneIsOverlaying: "+ GameLogic.uiPlaneIsOverlaying);
-        if (agent.remainingDistance < 0.1 && searchNewLocation && !GameLogic.uiPlaneIsOverlaying) 
+        if (!GameLogic.magoIsBeeingFeeded && agent.remainingDistance < 0.1 && searchNewLocation && !GameLogic.uiPlaneIsOverlaying) 
         {
             //Debug.Log("WaitBeforeSearchingNewPositionCoroutine3");
             //Debug.Log("Update Method1");
             //coroutineNewAIPosition =GetNewNavMeshPositionCoroutine(10);
             //StartCoroutine(coroutineNewAIPosition);
             //GetNewNavMeshPositionCoroutine();
-            generateRandomDestination();
+            GetNewNavMeshPositionCoroutine(15);
         }
         /*if (GameLogic.uiPlaneIsOverlaying)
         {
@@ -135,6 +135,12 @@ public class AIController : MonoBehaviour
         //Debug.Log("Finished Coroutine at timestamp : " + Time.time);
         //Debug.Log("GetNewNavMeshPositionCoroutine4");
     }*/
+
+    IEnumerator GetNewNavMeshPositionCoroutine(int waitInSeconds)
+    {
+        yield return new WaitForSeconds(waitInSeconds);
+        generateRandomDestination();
+    }
 
     private IEnumerator activateAIPlacedEvents(int waitInSeconds)
     {
