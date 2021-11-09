@@ -146,10 +146,15 @@ public class AIController : MonoBehaviour
         //Get random walkable plane
         //int randomIndex = Random.Range(0, listOfARPlanesWithNavmesh.Count);
         //currentPlaneMagoIsPositioned = listOfARPlanesWithNavmesh[randomIndex];
+        if (currentPlaneMagoIsPositioned == null)
+            return;
+
         searchNewLocation = false;
         nexPositionFound = false;
         float maxDistance = GetFarestBoundry(currentPlaneMagoIsPositioned);
         int counter = 0;
+        
+
         while (!nexPositionFound)
         {
             if (counter == 10)
