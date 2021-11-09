@@ -16,6 +16,7 @@ public class AIController : MonoBehaviour
     private bool nexPositionFound;
     private List<GameObject> renderersOfMago;
     private IEnumerator coroutineNewAIPosition;
+    private bool hourWasSet;
     // Start is called before the first frame update
     void Awake()
     {
@@ -29,7 +30,7 @@ public class AIController : MonoBehaviour
     {
         //Debug.Log("Start Method");
         renderersOfMago = new List<GameObject>();
-
+        hourWasSet = false;
         //renderersOfMago.AddRange(transform.GetChild(0).gameObject.GetComponentsInChildren<Renderer>());
         //Debug.Log("Start Method child name1: " + transform.GetChild(0).gameObject.name);
         Transform parentTransform = transform.GetChild(0).gameObject.transform;
@@ -72,14 +73,16 @@ public class AIController : MonoBehaviour
     void Update()
     {
         //Debug.Log("update called: "+searchNewLocation +" uPlane: "+ GameLogic.uiPlaneIsOverlaying);
-        if (searchNewLocation && !GameLogic.uiPlaneIsOverlaying) 
+        if (agent.remainingDistance < 0.1 && searchNewLocation && renderersOfMago[0].activeSelf && !GameLogic.uiPlaneIsOverlaying) 
         {
             //Debug.Log("WaitBeforeSearchingNewPositionCoroutine3");
             //Debug.Log("Update Method1");
-            coroutineNewAIPosition =GetNewNavMeshPositionCoroutine(10);
-            StartCoroutine(coroutineNewAIPosition);
+            //coroutineNewAIPosition =GetNewNavMeshPositionCoroutine(10);
+            //StartCoroutine(coroutineNewAIPosition);
+            //GetNewNavMeshPositionCoroutine();
+            generateRandomDestination();
         }
-        if (GameLogic.uiPlaneIsOverlaying)
+        /*if (GameLogic.uiPlaneIsOverlaying)
         {
             if (coroutineNewAIPosition != null)
             {
@@ -88,7 +91,7 @@ public class AIController : MonoBehaviour
             }
             searchNewLocation = false;
             //Debug.Log("Update Method3");
-        }
+        }*/
     }
 
     
@@ -130,12 +133,18 @@ public class AIController : MonoBehaviour
         //Debug.Log("GetNewNavMeshPositionCoroutine4");
     }
 
+    private IEnumerator activateAIPlacedEvents(int waitInSeconds)
+    {
+        yield return new WaitForSeconds(waitInSeconds);
+        searchNewLocation = true;
+        onAIPlacedIntoScene?.Invoke();
+    }
     private void generateRandomDestination()
     {
         //Get random walkable plane
         //int randomIndex = Random.Range(0, listOfARPlanesWithNavmesh.Count);
         //currentPlaneMagoIsPositioned = listOfARPlanesWithNavmesh[randomIndex];
-
+        searchNewLocation = false;
         float maxDistance = GetFarestBoundry(currentPlaneMagoIsPositioned);
         int counter = 0;
         while (!nexPositionFound)
@@ -155,8 +164,14 @@ public class AIController : MonoBehaviour
             {
                 //Debug.Log("GetNewNavMeshPositionCoroutine2" + hit.position);
                 agent.SetDestination(hit.position);
-                nexPositionFound = true;
+                //nexPositionFound = true;
                 //Debug.Log("GetNewNavMeshPositionCoroutine2.5 "+ nexPositionFound);
+                if (!hourWasSet)
+                {
+                    StartCoroutine(activateAIPlacedEvents(10));
+                    hourWasSet = true;
+                }
+                
             }
             counter++;
         }
