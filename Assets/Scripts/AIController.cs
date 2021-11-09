@@ -98,7 +98,9 @@ public class AIController : MonoBehaviour
     IEnumerator WaitBeforeSearchingNewPositionCoroutine(int waitInSeconds)
     {
         //Debug.Log("WaitBeforeSearchingNewPositionCoroutine1");
+        Debug.Log("update called2");
         yield return new WaitForSeconds(waitInSeconds);
+        Debug.Log("update called3");
         searchNewLocation = true;
         //Debug.Log("WaitBeforeSearchingNewPositionCoroutine2");
     }
@@ -136,7 +138,6 @@ public class AIController : MonoBehaviour
     private IEnumerator activateAIPlacedEvents(int waitInSeconds)
     {
         yield return new WaitForSeconds(waitInSeconds);
-        searchNewLocation = true;
         onAIPlacedIntoScene?.Invoke();
     }
     private void generateRandomDestination()
@@ -171,7 +172,7 @@ public class AIController : MonoBehaviour
                     StartCoroutine(activateAIPlacedEvents(10));
                     hourWasSet = true;
                 }
-                
+                searchNewLocation = true;
             }
             counter++;
         }
