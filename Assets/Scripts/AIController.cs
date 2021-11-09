@@ -124,6 +124,7 @@ public class AIController : MonoBehaviour
         //Debug.Log("GetNewNavMeshPositionCoroutine3");
         yield return new WaitForSeconds(waitInSeconds);
         searchNewLocation = true;
+        onAIPlacedIntoScene?.Invoke();
         //After we have waited 5 seconds print the time again.
         //Debug.Log("Finished Coroutine at timestamp : " + Time.time);
         //Debug.Log("GetNewNavMeshPositionCoroutine4");
@@ -300,7 +301,7 @@ public class AIController : MonoBehaviour
                         gameObject.SetActive(true);
                     }
                     renderersOfMago = null;
-                    StartCoroutine(waitThenInvokeAIPlacedIntoSceneEvent(10));
+                    //StartCoroutine(waitThenInvokeAIPlacedIntoSceneEvent(10));
                     //onAIPlacedIntoScene?.Invoke();
                 }
                 currentPlaneMagoIsPositioned = arPlane;
