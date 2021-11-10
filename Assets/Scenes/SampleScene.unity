@@ -2328,7 +2328,7 @@ MonoBehaviour:
   mago: {fileID: 1930906890}
   sleepTimeOkButton: {fileID: 957588980}
   aICamera: {fileID: 1409164230}
-  agent: {fileID: 0}
+  agent: {fileID: 1930906892}
 --- !u!4 &1330025530
 Transform:
   m_ObjectHideFlags: 0

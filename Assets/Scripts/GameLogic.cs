@@ -91,9 +91,11 @@ public class GameLogic : MonoBehaviour
     {
         if (Input.touchCount > 0)
         {
-            touchPos = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
             if (Input.GetTouch(0).phase == TouchPhase.Began)
-                Physics.Raycast(touchPos, Vector3.zero,out raycastTouchHit);
+            {
+                touchPos = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
+                Physics.Raycast(touchPos, aICamera.transform.forward, out raycastTouchHit);
+            }
         }
 
         //Debug.Log("Update Method Game Logic1: "+ uiPlaneIsOverlaying);
@@ -145,16 +147,18 @@ public class GameLogic : MonoBehaviour
             mago.transform.LookAt(aICamera.transform);
 
             //Vector3 position3D = Camera.main.WorldToScreenPoint(new Vector3(foodButton.transform.position.x, foodButton.transform.position.y - 4, foodButton.transform.position.z));
-            Vector3 position3D = aICamera.WorldToScreenPoint(new Vector3(foodButton.transform.position.x, foodButton.transform.position.y + 1, foodButton.transform.position.z));
+            Vector3 position3D = aICamera.WorldToScreenPoint(new Vector3(foodButton.transform.position.x, foodButton.transform.position.y + 1, foodButton.transform.position.z+10));
             Debug.Log("seeing mago3 touch position: "+ touchPos);
             Debug.Log("seeing mago3 button position: " + position3D);
             
             Vector3 magoPos = new Vector3(mago.transform.position.x, mago.transform.position.y+1, mago.transform.position.z);
             Debug.Log("seeing mago3 magoPos position: " + magoPos);
+            touchPos.y = touchPos.y + 1;
+            touchPos.z = touchPos.z + 2;
             //Instantiate(foodGameObject, position3D, Quaternion.identity);
-            //Instantiate(foodGameObject, touchPos, Quaternion.identity);
+            Instantiate(foodGameObjectTest, touchPos, Quaternion.identity);
             Instantiate(foodGameObject, magoPos, Quaternion.identity);
-            Instantiate(foodGameObjectTest, position3D, Quaternion.identity);
+            //Instantiate(foodGameObjectTest, position3D, Quaternion.identity);
 
         }
     }
