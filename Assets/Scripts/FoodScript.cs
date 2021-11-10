@@ -5,10 +5,8 @@ using UnityEngine;
 public class FoodScript : MonoBehaviour
 {
     // Start is called before the first frame update
-    private bool foodWasTouched;
     void Start()
     {
-        foodWasTouched=false;
     }
 
     // Update is called once per frame
@@ -20,7 +18,7 @@ public class FoodScript : MonoBehaviour
         {
             // get touch position in screen space
             // (if touch, gets average of all touches)
-            Vector3 screenPos = Input.GetTouch(0).position;
+            Vector2 screenPos = Input.GetTouch(0).position;
             // set a distance from the camera
             //screenPos.z = 10.0f;
             // convert touch position to world space

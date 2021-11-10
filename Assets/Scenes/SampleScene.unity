@@ -1088,7 +1088,7 @@ GameObject:
   - component: {fileID: 530020958}
   - component: {fileID: 530020957}
   m_Layer: 5
-  m_Name: InputField
+  m_Name: InputFieldMins
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3483,7 +3483,7 @@ MonoBehaviour:
   teethBrushingCanvas: {fileID: 1787514097}
   timeToSleepCanvas: {fileID: 1847346011}
   sleepTimeCanvas: {fileID: 393590355}
-  sleepTimeMinutesUI: {fileID: 1776064331}
+  sleepTimeMinutesUI: {fileID: 530020957}
   sleepTimeHoursUI: {fileID: 1104632371}
   foodGameObject: {fileID: 1794712077}
   foodGameObjectTest: {fileID: 3837044145933890630, guid: 5cf549d8c1cc3334897516067aa65ba7, type: 3}
@@ -4475,7 +4475,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1776064330
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4769,11 +4769,19 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5084807083956421459, guid: a4e9dc7ef2c26154d94678593e7ddbf1, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5084807083956421459, guid: a4e9dc7ef2c26154d94678593e7ddbf1, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -1042
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a4e9dc7ef2c26154d94678593e7ddbf1, type: 3}
---- !u!4 &1794712076 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1894472105545927345, guid: a4e9dc7ef2c26154d94678593e7ddbf1, type: 3}
+--- !u!224 &1794712076 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 5084807083956421459, guid: a4e9dc7ef2c26154d94678593e7ddbf1, type: 3}
   m_PrefabInstance: {fileID: 1794712075}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1794712077 stripped
