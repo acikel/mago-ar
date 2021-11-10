@@ -127,7 +127,8 @@ public class GameLogic : MonoBehaviour
         {
             disableGameUI();
             timeToSleepCanvas.SetActive(true);
-            if(!magoAnimator.GetCurrentAnimatorStateInfo(0).IsName("Sitting"))
+            Debug.Log("Animation name: "+magoAnimator.GetCurrentAnimatorStateInfo(0).IsName("Sitting"));
+            if (!magoAnimator.GetCurrentAnimatorStateInfo(0).IsName("Sitting"))
                 magoController.SitDown();
         }
         if(magoIsSleeping && System.DateTime.Now.Hour == ((sleepTimeHours+9)%23))
@@ -171,7 +172,8 @@ public class GameLogic : MonoBehaviour
         timeToSleepCanvas.SetActive(false);
         teethBrushingCanvas.SetActive(true);
 
-        magoController.SitDown();
+        //magoController.SitDown();
+        ResetAllTriggers();
         magoController.BrushTeeth();
 
     }
@@ -239,6 +241,18 @@ public class GameLogic : MonoBehaviour
     void DisplayTime(Text timeText,float timeHours, float timeMins)
     {
         timeHours=timeHours - 1;
-        timeText.text = string.Format("{0:00}:{0:00}", timeHours, timeMins);
+        timeText.text = string.Format("{0:00}:{1:00}", timeHours, timeMins);
     }
+
+    private void ResetAllTriggers()
+    {
+        foreach (var param in magoAnimator.parameters)
+        {
+            if (param.type == AnimatorControllerParameterType.Trigger)
+            {
+                magoAnimator.ResetTrigger(param.name);
+            }
+        }
+    }
+
 }

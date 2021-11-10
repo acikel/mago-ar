@@ -51,7 +51,7 @@ public class AIController : MonoBehaviour
         */
         GameLogic.onSleepTimeOKButton += OnSleepTimeOkButtonPressed;
         nexPositionFound = false;
-        //aRPlaneManager.planesChanged += InitializingAgent;
+        aRPlaneManager.planesChanged += InitializingAgent;
         //enabled = false;
         listOfARPlanesWithNavmesh = new List<ARPlane>();
         agent = GetComponent<NavMeshAgent>();
@@ -239,7 +239,7 @@ public class AIController : MonoBehaviour
         transform.position = firstARFloor.transform.position;
         enabled = true;
         */
-        //aRPlaneManager.planesChanged -= InitializingAgent;
+        aRPlaneManager.planesChanged -= InitializingAgent;
         aRPlaneManager.planesChanged += checkForNewSeatTableFloor;
     }
 
@@ -265,10 +265,10 @@ public class AIController : MonoBehaviour
         return minRadius;
     }
 
-    /*private void InitializingAgent(ARPlanesChangedEventArgs args)
+    private void InitializingAgent(ARPlanesChangedEventArgs args)
     {
-        StartCoroutine(WaitThenInitializeMago(30));
-    }*/
+        InitializeAgent();
+    }
 
     private void checkForNewSeatTableFloor(ARPlanesChangedEventArgs args)
     {
