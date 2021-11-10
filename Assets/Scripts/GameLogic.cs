@@ -141,8 +141,8 @@ public class GameLogic : MonoBehaviour
             else
                 sleepTimeMinutes = int.Parse(sleepTimeMinutesUI.text);
 
-            DisplayTime(timeToSleepText, sleepTimeHours + 9 % 23, sleepTimeMinutes);
-            DisplayTime(timeToSleepText2, sleepTimeHours + 9 % 23, sleepTimeMinutes);
+            DisplayTime(timeToSleepText, (sleepTimeHours + 9) % 23, sleepTimeMinutes);
+            DisplayTime(timeToSleepText2, (sleepTimeHours + 9) % 23, sleepTimeMinutes);
             sleepTimeCanvas.SetActive(false);
             enableGameUI();
             onSleepTimeOKButton?.Invoke();
@@ -215,7 +215,6 @@ public class GameLogic : MonoBehaviour
 
     void DisplayTime(Text timeText,float timeHours, float timeMins)
     {
-        timeHours = timeHours + 1;
         timeText.text = string.Format("{0:00}:{1:00}", timeHours, timeMins);
     }
 }
