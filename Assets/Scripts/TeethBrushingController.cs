@@ -8,7 +8,7 @@ public class TeethBrushingController : MonoBehaviour
     public delegate void OnTimerFinished();
     public static OnTimerFinished onTimerFinished;
 
-    private const int timeForCountdownInSeconds = 180;
+    private const int timeForCountdownInSeconds = 120;
     public float timeRemainingInSeconds = timeForCountdownInSeconds;
     private bool timerIsRunning=false;
     public Text timeText;
