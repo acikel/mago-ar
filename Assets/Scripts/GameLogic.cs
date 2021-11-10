@@ -13,6 +13,7 @@ public class GameLogic : MonoBehaviour
     public GameObject gameUICanvas;
     public GameObject blackScreenCanvas;
     public GameObject teethBrushingCanvas;
+    public GameObject timeToSleepCanvas;
     public GameObject sleepTimeCanvas;
 
     public InputField sleepTimeMinutesUI;
@@ -32,22 +33,30 @@ public class GameLogic : MonoBehaviour
     public GameObject mago;
 
     public Button sleepTimeOkButton;
+    public Button timeToSleepOkButton;
+    public Text timeToSleepText;
 
     public Camera aICamera;
+    public Camera secondMagoCamera;
     public static bool magoIsBeeingFeeded;
 
     public NavMeshAgent agent;
     private Vector3 touchPos;
     private RaycastHit raycastTouchHit;
+    private Color magoCameraColor;
     // Start is called before the first frame update
     void Start()
     {
+        secondMagoCamera.enabled = false;
         foodButton.onClick.AddListener(gameUIFoodButton);
         sleepTimeOkButton.onClick.AddListener(sleepTimeOKButton);
+        timeToSleepOkButton.onClick.AddListener(timeToSleepOKButton);
 
         blackScreenCanvas.SetActive(false);
         teethBrushingCanvas.SetActive(false);
+        timeToSleepCanvas.SetActive(false);
         sleepTimeCanvas.SetActive(false);
+        magoCameraColor = secondMagoCamera.backgroundColor;
 
         enableGameUI();
         uiPlaneIsOverlaying = false;
@@ -63,6 +72,7 @@ public class GameLogic : MonoBehaviour
         //enableGameUI();
         teethBrushingCanvas.SetActive(false);
         blackScreenCanvas.SetActive(true);
+        secondMagoCamera.backgroundColor = Color.black;
         magoIsSleeping = true;
     }
 
@@ -103,11 +113,12 @@ public class GameLogic : MonoBehaviour
         if (!sleepTimeMinutesUI.text.Equals("")&&(System.DateTime.Now.Hour == sleepTimeHours && System.DateTime.Now.Minute == sleepTimeMinutes))
         {
             disableGameUI();
-            teethBrushingCanvas.SetActive(true);
+            timeToSleepCanvas.SetActive(true);
         }
         if(magoIsSleeping && System.DateTime.Now.Hour == (sleepTimeHours+9%23))
         {
             blackScreenCanvas.SetActive(false);
+            secondMagoCamera.backgroundColor = magoCameraColor;
             magoIsSleeping = false;
             enableGameUI();
         }
@@ -128,13 +139,20 @@ public class GameLogic : MonoBehaviour
             else
                 sleepTimeMinutes = int.Parse(sleepTimeMinutesUI.text);
 
+            DisplayTime(timeToSleepText, sleepTimeHours + 9 % 23, sleepTimeMinutes);
             sleepTimeCanvas.SetActive(false);
             enableGameUI();
             onSleepTimeOKButton?.Invoke();
         }
         
     }
+    public void timeToSleepOKButton()
+    {
+        //Debug.Log("OK button clicked");
+        timeToSleepCanvas.SetActive(false);
+        teethBrushingCanvas.SetActive(true);
 
+    }
 
     public void gameUIFoodButton()
     {
@@ -179,6 +197,7 @@ public class GameLogic : MonoBehaviour
         //Debug.Log("Update Method Game Logic2");
         gameUICanvas.SetActive(false);
         uiPlaneIsOverlaying = true;
+        secondMagoCamera.enabled = true;
     }
 
     private void enableGameUI()
@@ -186,5 +205,13 @@ public class GameLogic : MonoBehaviour
         //Debug.Log("Update Method Game Logic3");
         gameUICanvas.SetActive(true);
         uiPlaneIsOverlaying = false;
+        secondMagoCamera.enabled = false;
+    }
+
+
+    void DisplayTime(Text timeText,float timeHours, float timeMins)
+    {
+
+        timeText.text = string.Format("{0:00}:{1:00}", timeHours, timeMins);
     }
 }
