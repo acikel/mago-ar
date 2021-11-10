@@ -150,8 +150,8 @@ public class GameLogic : MonoBehaviour
             if (!magoIsSitting)
             {
                 magoIsSitting = true;
-                ResetAllTriggers();
-                magoController.SitDown();
+                //ResetAllTriggers();
+                //magoController.SitDown();
             }
         }
         if(magoIsSleeping && System.DateTime.Now.Hour == ((sleepTimeHours+9)%23))
@@ -198,8 +198,8 @@ public class GameLogic : MonoBehaviour
         timeToSleepCanvas.SetActive(false);
         teethBrushingCanvas.SetActive(true);
 
-        magoController.SitDown();
-        //ResetAllTriggers();
+        //magoController.SitDown();
+        ResetAllTriggers();
         magoController.BrushTeeth();
 
     }
