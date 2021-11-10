@@ -126,6 +126,8 @@ public class GameLogic : MonoBehaviour
             if (Input.GetTouch(0).phase == TouchPhase.Ended && foodGameObjectUI.activeSelf)
             {
                 foodGameObjectUI.SetActive(false);
+                ResetAllTriggers();
+                magoController.EatFood();
             }
         }
 
