@@ -133,7 +133,7 @@ public class GameLogic : MonoBehaviour
             }*/
             if (Input.GetTouch(0).phase == TouchPhase.Ended && foodGameObjectUI.activeSelf)
             {
-                foodGameObjectUI.SetActive(false);
+                //foodGameObjectUI.SetActive(false);
                 ResetAllTriggers();
                 magoController.EatFood();
                 StartCoroutine(waitThenGetBackToIdleFromEating(3));
