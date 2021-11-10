@@ -119,8 +119,9 @@ public class GameLogic : MonoBehaviour
     {
         yield return new WaitForSeconds(waitForSeconds);
         ResetAllTriggers();
+        agent.enabled = true;
         //magoController.EatFood();
-        
+
     }
     // Update is called once per frame
     void Update()
