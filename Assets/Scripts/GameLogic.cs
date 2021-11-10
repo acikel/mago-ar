@@ -116,12 +116,16 @@ public class GameLogic : MonoBehaviour
     {
         if (Input.touchCount > 0)
         {
-            if (Input.GetTouch(0).phase == TouchPhase.Began)
+            /*if (Input.GetTouch(0).phase == TouchPhase.Began)
             {
                 //touchPos = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
                 //touchPos = Input.GetTouch(0).position;
                 touchPos = Input.GetTouch(0).rawPosition;
                 Physics.Raycast(touchPos, aICamera.transform.forward, out raycastTouchHit);
+            }*/
+            if (Input.GetTouch(0).phase == TouchPhase.Ended && foodGameObjectUI.activeSelf)
+            {
+                foodGameObjectUI.SetActive(false);
             }
         }
 
@@ -217,7 +221,9 @@ public class GameLogic : MonoBehaviour
             Instantiate(foodGameObject, magoPos, Quaternion.identity);
             Instantiate(foodGameObjectTest, raycastTouchHit.point, Quaternion.identity);
             */
-            Instantiate(foodGameObject3D, foodPosition.position, Quaternion.identity);
+
+
+            //Instantiate(foodGameObject3D, foodPosition.position, Quaternion.identity);
         }
     }
 

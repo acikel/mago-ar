@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class FoodScript : MonoBehaviour
 {
+    private Vector3 startPosition;
     // Start is called before the first frame update
     void Start()
     {
+        startPosition = transform.position;
+        gameObject.SetActive(false);
+    }
+
+    private void OnDisable()
+    {
+        transform.position = startPosition;
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        
         // if left-mouse-button is being held OR there is at least one touch
         if (isActiveAndEnabled)
         {
