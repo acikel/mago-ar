@@ -125,7 +125,7 @@ public class GameLogic : MonoBehaviour
             timeToSleepCanvas.SetActive(true);
             magoController.SitDown();
         }
-        if(magoIsSleeping && System.DateTime.Now.Hour == ((sleepTimeHours+9)%23))
+        if(magoIsSleeping && System.DateTime.Now.Hour == (sleepTimeHours+9%23))
         {
             blackScreenCanvas.SetActive(false);
             secondMagoCamera.backgroundColor = magoCameraColor;
@@ -182,7 +182,9 @@ public class GameLogic : MonoBehaviour
             agent.enabled = false;
             mago.transform.LookAt(aICamera.transform);
             magoController.ReadyForFood();
-
+            foodGameObject.SetActive(true);
+            
+            /*
             //Vector3 position3D = Camera.main.WorldToScreenPoint(new Vector3(foodButton.transform.position.x, foodButton.transform.position.y - 4, foodButton.transform.position.z));
             Vector3 position3D = aICamera.WorldToScreenPoint(new Vector3(foodButton.transform.position.x, foodButton.transform.position.y + 1, foodButton.transform.position.z+10));
             Debug.Log("seeing mago3 touch position: "+ touchPos);
@@ -198,7 +200,7 @@ public class GameLogic : MonoBehaviour
             //Instantiate(foodGameObjectTest, touchPos, Quaternion.identity);
             Instantiate(foodGameObject, magoPos, Quaternion.identity);
             Instantiate(foodGameObjectTest, raycastTouchHit.point, Quaternion.identity);
-
+            */
         }
     }
 

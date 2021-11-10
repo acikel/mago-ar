@@ -5,9 +5,10 @@ using UnityEngine;
 public class FoodScript : MonoBehaviour
 {
     // Start is called before the first frame update
+    private bool foodWasTouched;
     void Start()
     {
-        
+        foodWasTouched=false;
     }
 
     // Update is called once per frame
@@ -15,22 +16,23 @@ public class FoodScript : MonoBehaviour
     {
 
         // if left-mouse-button is being held OR there is at least one touch
-        if (Input.GetMouseButton(0) || Input.touchCount > 0)
+        if (isActiveAndEnabled)
         {
             // get touch position in screen space
             // (if touch, gets average of all touches)
             Vector3 screenPos = Input.GetTouch(0).position;
             // set a distance from the camera
-            screenPos.z = 10.0f;
+            //screenPos.z = 10.0f;
             // convert touch position to world space
-            Vector3 worldPos = Camera.main.ScreenToWorldPoint(screenPos);
+            //Vector3 worldPos = Camera.main.ScreenToWorldPoint(screenPos);
 
             // get current position of this GameObject
-            Vector3 newPos = transform.position;
+            //Vector3 newPos = transform.position;
             // set x position to mouse world-space x position
-            newPos.x = worldPos.x;
+            //newPos.x = worldPos.x;
             // apply new position
-            transform.position = newPos;
+            //transform.position = newPos;
+            transform.position = screenPos;
         }
 
     }
