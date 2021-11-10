@@ -118,9 +118,9 @@ public class GameLogic : MonoBehaviour
             }
         }
 
-        //Debug.Log("Update Method Game Logic1: "+ uiPlaneIsOverlaying);
-        //if (!timeToSleepOkButtonClicked && !sleepTimeMinutesUI.text.Equals("")&&(System.DateTime.Now.Hour == sleepTimeHours && System.DateTime.Now.Minute == sleepTimeMinutes))
-        if (!sleepTimeMinutesUI.text.Equals("") && (System.DateTime.Now.Hour == sleepTimeHours && System.DateTime.Now.Minute == sleepTimeMinutes))
+        Debug.Log("Update Method Game Logic1: "+ sleepTimeMinutes + " sleepTimeHours: "+ sleepTimeHours + " timeToSleepOkButtonClicked: " + timeToSleepOkButtonClicked + " sleepTimeMinutesUI.text: "+ sleepTimeMinutesUI.text);
+        if (!timeToSleepOkButtonClicked && !sleepTimeMinutesUI.text.Equals("")&&(System.DateTime.Now.Hour == sleepTimeHours && System.DateTime.Now.Minute == sleepTimeMinutes))
+        //if (!sleepTimeMinutesUI.text.Equals("") && (System.DateTime.Now.Hour == sleepTimeHours && System.DateTime.Now.Minute == sleepTimeMinutes))
         {
             disableGameUI();
             timeToSleepCanvas.SetActive(true);
