@@ -93,7 +93,8 @@ public class GameLogic : MonoBehaviour
         {
             if (Input.GetTouch(0).phase == TouchPhase.Began)
             {
-                touchPos = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
+                //touchPos = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
+                touchPos = Input.GetTouch(0).position;
                 Physics.Raycast(touchPos, aICamera.transform.forward, out raycastTouchHit);
             }
         }
@@ -155,6 +156,7 @@ public class GameLogic : MonoBehaviour
             Debug.Log("seeing mago3 magoPos position: " + magoPos);
             touchPos.y = touchPos.y + 1;
             touchPos.z = touchPos.z + 2;
+            magoPos.z = magoPos.z + 10;
             //Instantiate(foodGameObject, position3D, Quaternion.identity);
             Instantiate(foodGameObjectTest, touchPos, Quaternion.identity);
             Instantiate(foodGameObject, magoPos, Quaternion.identity);
