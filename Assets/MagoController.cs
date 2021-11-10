@@ -9,6 +9,8 @@ public class MagoController : MonoBehaviour
     public GameObject apple;
 
     public GameObject brush;
+
+    public GameObject sleepyMask;
     // Start is called before the first frame update
     void Start()
     {
@@ -94,6 +96,8 @@ public class MagoController : MonoBehaviour
     {
         if (brush.activeSelf) brush.SetActive(false);
         if (apple.activeSelf) apple.SetActive(false);
+
+        sleepyMask.SetActive(!sleepyMask.activeSelf);
         myAnimatorController.SetTrigger("triggerSleep");
     }
 
