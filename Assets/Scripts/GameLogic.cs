@@ -50,6 +50,9 @@ public class GameLogic : MonoBehaviour
     private RaycastHit raycastTouchHit;
     private Color magoCameraColor;
 
+    public GameObject appleAnimation;
+    public GameObject brushAnimation;
+
     private bool timeToSleepOkButtonClicked;
     // Start is called before the first frame update
     void Start()
@@ -252,6 +255,8 @@ public class GameLogic : MonoBehaviour
 
     private void ResetAllTriggers()
     {
+        appleAnimation.SetActive(false);
+        brushAnimation.SetActive(false);
         foreach (var param in magoAnimator.parameters)
         {
             if (param.type == AnimatorControllerParameterType.Trigger)

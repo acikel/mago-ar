@@ -2435,6 +2435,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6129d8dcf1d33c544b1258b33414c267, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &908756018 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 619991504802095798, guid: 459f4f044c61199408f7c806e01fca15, type: 3}
+  m_PrefabInstance: {fileID: 908756014}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &908756019 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 619991506121842014, guid: 459f4f044c61199408f7c806e01fca15, type: 3}
+  m_PrefabInstance: {fileID: 908756014}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &957588978
 GameObject:
   m_ObjectHideFlags: 0
@@ -3587,6 +3597,8 @@ MonoBehaviour:
   magoAnimator: {fileID: 1682682940}
   agent: {fileID: 1930906892}
   magoController: {fileID: 908756017}
+  appleAnimation: {fileID: 908756019}
+  brushAnimation: {fileID: 908756018}
 --- !u!4 &1330025530
 Transform:
   m_ObjectHideFlags: 0
