@@ -11,6 +11,9 @@ public class MagoController : MonoBehaviour
     public GameObject brush;
 
     public GameObject sleepyMask;
+
+    public float moveSpeed;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +23,7 @@ public class MagoController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        transform.parent.transform.Translate(Vector3.forward * moveSpeed);
 
         if (Input.GetKeyDown(KeyCode.R))
         {
