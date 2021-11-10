@@ -54,9 +54,11 @@ public class GameLogic : MonoBehaviour
     public GameObject brushAnimation;
 
     private bool timeToSleepOkButtonClicked;
+    private bool magoIsSitting;
     // Start is called before the first frame update
     void Start()
     {
+        magoIsSitting = false;
         secondMagoCamera.enabled = false;
         foodButton.onClick.AddListener(gameUIFoodButton);
         sleepTimeOkButton.onClick.AddListener(sleepTimeOKButton);
@@ -144,11 +146,12 @@ public class GameLogic : MonoBehaviour
         {
             disableGameUI();
             timeToSleepCanvas.SetActive(true);
-            Debug.Log("Animation name: "+magoAnimator.GetCurrentAnimatorStateInfo(0).IsName("Sitting"));
-            if (!magoAnimator.GetCurrentAnimatorStateInfo(0).IsName("Sitting"))
+            //Debug.Log("Animation name: "+magoAnimator.GetCurrentAnimatorStateInfo(0).IsName("Sitting"));
+            if (!magoIsSitting)
             {
-                //ResetAllTriggers();
-                //magoController.SitDown();
+                magoIsSitting = true;
+                ResetAllTriggers();
+                magoController.SitDown();
             }
         }
         if(magoIsSleeping && System.DateTime.Now.Hour == ((sleepTimeHours+9)%23))
@@ -191,6 +194,7 @@ public class GameLogic : MonoBehaviour
     {
         //Debug.Log("OK button clicked");
         timeToSleepOkButtonClicked = true;
+        magoIsSitting = false;
         timeToSleepCanvas.SetActive(false);
         teethBrushingCanvas.SetActive(true);
 
