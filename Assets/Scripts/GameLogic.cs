@@ -111,6 +111,12 @@ public class GameLogic : MonoBehaviour
         
     }*/
 
+    private IEnumerator waitThenGetBackToIdleFromEating(int waitForSeconds)
+    {
+        yield return new WaitForSeconds(waitForSeconds);
+        magoController.EatFood();
+        ResetAllTriggers();
+    }
     // Update is called once per frame
     void Update()
     {
@@ -128,6 +134,7 @@ public class GameLogic : MonoBehaviour
                 foodGameObjectUI.SetActive(false);
                 ResetAllTriggers();
                 magoController.EatFood();
+                StartCoroutine(waitThenGetBackToIdleFromEating(3));
             }
         }
 
