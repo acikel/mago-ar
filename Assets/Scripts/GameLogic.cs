@@ -117,7 +117,7 @@ public class GameLogic : MonoBehaviour
             disableGameUI();
             timeToSleepCanvas.SetActive(true);
         }
-        if(magoIsSleeping && System.DateTime.Now.Hour == (sleepTimeHours+9%23))
+        if(magoIsSleeping && System.DateTime.Now.Hour == (sleepTimeHours+9)%23)
         {
             blackScreenCanvas.SetActive(false);
             secondMagoCamera.backgroundColor = magoCameraColor;
@@ -215,6 +215,6 @@ public class GameLogic : MonoBehaviour
 
     void DisplayTime(Text timeText,float timeHours, float timeMins)
     {
-        timeText.text = string.Format("{0:00}:{1:00}", timeHours, timeMins);
+        timeText.text = string.Format("{0}:{0}", timeHours, timeMins);
     }
 }
