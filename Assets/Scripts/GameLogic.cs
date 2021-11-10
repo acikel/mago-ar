@@ -119,13 +119,14 @@ public class GameLogic : MonoBehaviour
         }
 
         //Debug.Log("Update Method Game Logic1: "+ uiPlaneIsOverlaying);
-        if (!timeToSleepOkButtonClicked && !sleepTimeMinutesUI.text.Equals("")&&(System.DateTime.Now.Hour == sleepTimeHours && System.DateTime.Now.Minute == sleepTimeMinutes))
+        //if (!timeToSleepOkButtonClicked && !sleepTimeMinutesUI.text.Equals("")&&(System.DateTime.Now.Hour == sleepTimeHours && System.DateTime.Now.Minute == sleepTimeMinutes))
+        if (!sleepTimeMinutesUI.text.Equals("") && (System.DateTime.Now.Hour == sleepTimeHours && System.DateTime.Now.Minute == sleepTimeMinutes))
         {
             disableGameUI();
             timeToSleepCanvas.SetActive(true);
             magoController.SitDown();
         }
-        if(magoIsSleeping && System.DateTime.Now.Hour == (sleepTimeHours+9%23))
+        if(magoIsSleeping && System.DateTime.Now.Hour == ((sleepTimeHours+9)%23))
         {
             blackScreenCanvas.SetActive(false);
             secondMagoCamera.backgroundColor = magoCameraColor;
