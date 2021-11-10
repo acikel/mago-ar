@@ -217,10 +217,10 @@ public class GameLogic : MonoBehaviour
     public void gameUIFoodButton()
     {
         magoIsBeeingFeeded = true;
-        Debug.Log("seeing mago1: "+ magoRenderer + " renderer: "+ magoRenderer.GetComponent<Renderer>() + " is visible? " + magoRenderer.GetComponent<Renderer>().isVisible + " uiPlaneIsOverlaying: "+ uiPlaneIsOverlaying);
+        //Debug.Log("seeing mago1: "+ magoRenderer + " renderer: "+ magoRenderer.GetComponent<Renderer>() + " is visible? " + magoRenderer.GetComponent<Renderer>().isVisible + " uiPlaneIsOverlaying: "+ uiPlaneIsOverlaying);
         if (!uiPlaneIsOverlaying && magoRenderer.GetComponent<Renderer>().isVisible)
         {
-            Debug.Log("seeing mago2");
+            //Debug.Log("seeing mago2");
 
             agent.enabled = false;
             mago.transform.LookAt(aICamera.transform);
@@ -279,7 +279,7 @@ public class GameLogic : MonoBehaviour
 
     void DisplayTime(Text timeText,float timeHours, float timeMins)
     {
-        timeHours=timeHours - 1;
+        //timeHours=timeHours-1;
         timeText.text = string.Format("{0:00}:{1:00}", timeHours, timeMins);
     }
 
