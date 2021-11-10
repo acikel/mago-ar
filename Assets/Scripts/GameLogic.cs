@@ -43,6 +43,7 @@ public class GameLogic : MonoBehaviour
 
     public Transform foodPosition;
 
+    public Animator magoAnimator;
     public NavMeshAgent agent;
     public MagoController magoController;
     private Vector3 touchPos;
@@ -121,12 +122,13 @@ public class GameLogic : MonoBehaviour
         }
 
         //Debug.Log("Update Method Game Logic1: "+ sleepTimeMinutes + " sleepTimeHours: "+ sleepTimeHours + " timeToSleepOkButtonClicked: " + timeToSleepOkButtonClicked + " sleepTimeMinutesUI.text: "+ sleepTimeMinutesUI.text);
-        if (!timeToSleepOkButtonClicked && !sleepTimeMinutesUI.text.Equals("")&&(System.DateTime.Now.Hour == sleepTimeHours && System.DateTime.Now.Minute == sleepTimeMinutes && System.DateTime.Now.Second == 0 && System.DateTime.Now.Millisecond == 0))
+        if (!timeToSleepOkButtonClicked && !sleepTimeMinutesUI.text.Equals("")&&(System.DateTime.Now.Hour == sleepTimeHours && System.DateTime.Now.Minute == sleepTimeMinutes))
         //if (!sleepTimeMinutesUI.text.Equals("") && (System.DateTime.Now.Hour == sleepTimeHours && System.DateTime.Now.Minute == sleepTimeMinutes))
         {
             disableGameUI();
             timeToSleepCanvas.SetActive(true);
-            magoController.SitDown();
+            if(!magoAnimator.GetCurrentAnimatorStateInfo(0).IsName("Sitting"))
+                magoController.SitDown();
         }
         if(magoIsSleeping && System.DateTime.Now.Hour == ((sleepTimeHours+9)%23))
         {
@@ -236,6 +238,7 @@ public class GameLogic : MonoBehaviour
 
     void DisplayTime(Text timeText,float timeHours, float timeMins)
     {
-        timeText.text = string.Format("{0}:{0}", timeHours, timeMins);
+        timeHours=timeHours - 1;
+        timeText.text = string.Format("{0:00}:{0:00}", timeHours, timeMins);
     }
 }

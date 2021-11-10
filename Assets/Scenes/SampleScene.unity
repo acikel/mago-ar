@@ -3583,7 +3583,8 @@ MonoBehaviour:
   timeToSleepText2: {fileID: 1519381772}
   aICamera: {fileID: 1409164230}
   secondMagoCamera: {fileID: 1609847308}
-  foodPosition: {fileID: 0}
+  foodPosition: {fileID: 1720901452}
+  magoAnimator: {fileID: 1682682940}
   agent: {fileID: 1930906892}
   magoController: {fileID: 908756017}
 --- !u!4 &1330025530
@@ -4469,6 +4470,11 @@ Transform:
   m_Father: {fileID: 1930906891}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 4.573, y: 180, z: 0}
+--- !u!95 &1682682940 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 619991505489045584, guid: 459f4f044c61199408f7c806e01fca15, type: 3}
+  m_PrefabInstance: {fileID: 908756014}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1691936455
 GameObject:
   m_ObjectHideFlags: 0
