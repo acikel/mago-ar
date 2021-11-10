@@ -90,7 +90,7 @@ public class GameLogic : MonoBehaviour
         secondMagoCamera.backgroundColor = Color.black;
         magoIsSleeping = true;
         timeToSleepOkButtonClicked = false;
-        magoController.BrushTeeth();
+        //magoController.BrushTeeth();
         ResetAllTriggers();
         magoController.Sleep();
     }
@@ -119,7 +119,7 @@ public class GameLogic : MonoBehaviour
     {
         yield return new WaitForSeconds(waitForSeconds);
         ResetAllTriggers();
-        magoController.EatFood();
+        //magoController.EatFood();
         
     }
     // Update is called once per frame
@@ -150,8 +150,8 @@ public class GameLogic : MonoBehaviour
             if (!magoIsSitting)
             {
                 magoIsSitting = true;
-                //ResetAllTriggers();
-                //magoController.SitDown();
+                ResetAllTriggers();
+                magoController.SitDown();
             }
         }
         if(magoIsSleeping && System.DateTime.Now.Hour == ((sleepTimeHours+9)%23))
