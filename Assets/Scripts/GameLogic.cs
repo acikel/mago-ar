@@ -35,6 +35,7 @@ public class GameLogic : MonoBehaviour
     public Button sleepTimeOkButton;
     public Button timeToSleepOkButton;
     public Text timeToSleepText;
+    public Text timeToSleepText2;
 
     public Camera aICamera;
     public Camera secondMagoCamera;
@@ -104,7 +105,8 @@ public class GameLogic : MonoBehaviour
             if (Input.GetTouch(0).phase == TouchPhase.Began)
             {
                 //touchPos = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
-                touchPos = Input.GetTouch(0).position;
+                //touchPos = Input.GetTouch(0).position;
+                touchPos = Input.GetTouch(0).rawPosition;
                 Physics.Raycast(touchPos, aICamera.transform.forward, out raycastTouchHit);
             }
         }
@@ -140,6 +142,7 @@ public class GameLogic : MonoBehaviour
                 sleepTimeMinutes = int.Parse(sleepTimeMinutesUI.text);
 
             DisplayTime(timeToSleepText, sleepTimeHours + 9 % 23, sleepTimeMinutes);
+            DisplayTime(timeToSleepText2, sleepTimeHours + 9 % 23, sleepTimeMinutes);
             sleepTimeCanvas.SetActive(false);
             enableGameUI();
             onSleepTimeOKButton?.Invoke();
@@ -211,7 +214,7 @@ public class GameLogic : MonoBehaviour
 
     void DisplayTime(Text timeText,float timeHours, float timeMins)
     {
-
+        timeHours = timeHours + 1;
         timeText.text = string.Format("{0:00}:{1:00}", timeHours, timeMins);
     }
 }
