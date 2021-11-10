@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.UI;
 
 public class GameLogic : MonoBehaviour
@@ -35,6 +36,7 @@ public class GameLogic : MonoBehaviour
     public Camera aICamera;
     public static bool magoIsBeeingFeeded;
 
+    public NavMeshAgent agent;
     private Vector3 touchPos;
     private RaycastHit raycastTouchHit;
     // Start is called before the first frame update
@@ -139,8 +141,9 @@ public class GameLogic : MonoBehaviour
         {
             Debug.Log("seeing mago2");
 
-            //mago.transform.LookAt(aICamera.transform);
-            
+            agent.enabled = false;
+            mago.transform.LookAt(aICamera.transform);
+
             //Vector3 position3D = Camera.main.WorldToScreenPoint(new Vector3(foodButton.transform.position.x, foodButton.transform.position.y - 4, foodButton.transform.position.z));
             Vector3 position3D = aICamera.WorldToScreenPoint(new Vector3(foodButton.transform.position.x, foodButton.transform.position.y + 1, foodButton.transform.position.z));
             Debug.Log("seeing mago3 touch position: "+ touchPos);
