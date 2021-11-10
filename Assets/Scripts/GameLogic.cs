@@ -83,7 +83,8 @@ public class GameLogic : MonoBehaviour
         secondMagoCamera.backgroundColor = Color.black;
         magoIsSleeping = true;
         timeToSleepOkButtonClicked = false;
-        magoController.BrushTeeth();
+        //magoController.BrushTeeth();
+        ResetAllTriggers();
         magoController.Sleep();
     }
 
@@ -129,14 +130,18 @@ public class GameLogic : MonoBehaviour
             timeToSleepCanvas.SetActive(true);
             Debug.Log("Animation name: "+magoAnimator.GetCurrentAnimatorStateInfo(0).IsName("Sitting"));
             if (!magoAnimator.GetCurrentAnimatorStateInfo(0).IsName("Sitting"))
+            {
+                ResetAllTriggers();
                 magoController.SitDown();
+            }
         }
         if(magoIsSleeping && System.DateTime.Now.Hour == ((sleepTimeHours+9)%23))
         {
             blackScreenCanvas.SetActive(false);
             secondMagoCamera.backgroundColor = magoCameraColor;
             magoIsSleeping = false;
-            magoController.Sleep();
+            ResetAllTriggers();
+            //magoController.Sleep();
             enableGameUI();
         }
     }
@@ -188,6 +193,7 @@ public class GameLogic : MonoBehaviour
 
             agent.enabled = false;
             mago.transform.LookAt(aICamera.transform);
+            ResetAllTriggers();
             magoController.ReadyForFood();
             foodGameObjectUI.SetActive(true);
 
