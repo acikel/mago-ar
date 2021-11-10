@@ -76,10 +76,12 @@ public class GameLogic : MonoBehaviour
         magoIsSleeping = false;
         AIController.onAIPlacedIntoScene += AIWasPlaced;
         TeethBrushingController.onTimerFinished += OnTeethBrushingTimerFinished;
+        FoodScript.onFoodGiven += OnFoodGiven;
 
         
     }
 
+    
     private void OnTeethBrushingTimerFinished()
     {
         //enableGameUI();
@@ -133,10 +135,7 @@ public class GameLogic : MonoBehaviour
             }*/
             if (Input.GetTouch(0).phase == TouchPhase.Ended && foodGameObjectUI.activeSelf)
             {
-                //foodGameObjectUI.SetActive(false);
-                ResetAllTriggers();
-                magoController.EatFood();
-                StartCoroutine(waitThenGetBackToIdleFromEating(3));
+                
             }
         }
 
@@ -165,6 +164,16 @@ public class GameLogic : MonoBehaviour
             enableGameUI();
         }
     }
+
+
+    private void OnFoodGiven()
+    {
+        //foodGameObjectUI.SetActive(false);
+        ResetAllTriggers();
+        magoController.EatFood();
+        StartCoroutine(waitThenGetBackToIdleFromEating(3));
+    }
+
 
     public void sleepTimeOKButton()
     {

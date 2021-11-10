@@ -6,6 +6,8 @@ using UnityEngine.EventSystems;
 public class FoodScript : MonoBehaviour, IEndDragHandler, IDragHandler
 {
     private Vector3 startPosition;
+    public delegate void OnFoodGiven();
+    public static OnFoodGiven onFoodGiven;
     // Start is called before the first frame update
     void Start()
     {
@@ -49,6 +51,7 @@ public class FoodScript : MonoBehaviour, IEndDragHandler, IDragHandler
     void IEndDragHandler.OnEndDrag(PointerEventData eventData)
     {
         gameObject.SetActive(false);
+        onFoodGiven?.Invoke();
     }
 
     void IDragHandler.OnDrag(PointerEventData eventData)
