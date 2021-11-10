@@ -4,9 +4,10 @@
     <list default="true" id="d2c08e85-036e-4f8a-9285-f34bd53a1c31" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MaGoAR/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MaGoAR/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Animation/mycontroller.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/mycontroller.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/toothBrushController.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/toothBrushController.controller" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/MagoController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MagoController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/ManusTestScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/ManusTestScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,6 +65,7 @@
       <updated>1636466467636</updated>
       <workItem from="1636466473713" duration="3519000" />
       <workItem from="1636543026780" duration="267000" />
+      <workItem from="1636551956570" duration="758000" />
     </task>
     <servers />
   </component>
