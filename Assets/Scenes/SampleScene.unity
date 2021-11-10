@@ -1977,13 +1977,14 @@ GameObject:
   - component: {fileID: 789512110}
   - component: {fileID: 789512112}
   - component: {fileID: 789512111}
+  - component: {fileID: 789512113}
   m_Layer: 5
-  m_Name: Image
+  m_Name: AppleUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &789512110
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2041,6 +2042,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 789512109}
   m_CullTransparentMesh: 1
+--- !u!114 &789512113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 789512109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a91b1a4310a7c8345b2beba3d25f200d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &858152029
 GameObject:
   m_ObjectHideFlags: 0
@@ -3559,8 +3572,8 @@ MonoBehaviour:
   sleepTimeCanvas: {fileID: 393590355}
   sleepTimeMinutesUI: {fileID: 530020957}
   sleepTimeHoursUI: {fileID: 1104632371}
-  foodGameObject: {fileID: 789512109}
-  foodGameObjectTest: {fileID: 3837044145933890630, guid: 5cf549d8c1cc3334897516067aa65ba7, type: 3}
+  foodGameObjectUI: {fileID: 789512109}
+  foodGameObject3D: {fileID: 919132149155446097, guid: 742a26ea6d345f44391c2d8c485a6252, type: 3}
   foodButton: {fileID: 1129942985}
   magoRenderer: {fileID: 908756016}
   mago: {fileID: 1930906890}
@@ -3570,6 +3583,7 @@ MonoBehaviour:
   timeToSleepText2: {fileID: 1519381772}
   aICamera: {fileID: 1409164230}
   secondMagoCamera: {fileID: 1609847308}
+  foodPosition: {fileID: 0}
   agent: {fileID: 1930906892}
   magoController: {fileID: 908756017}
 --- !u!4 &1330025530
@@ -4532,6 +4546,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1691936455}
   m_CullTransparentMesh: 1
+--- !u!1 &1720901451
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1720901452}
+  m_Layer: 10
+  m_Name: FoodPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1720901452
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1720901451}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.528, z: 1.134}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1930906891}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1776064329
 GameObject:
   m_ObjectHideFlags: 0
@@ -5038,6 +5082,7 @@ Transform:
   - {fileID: 908756015}
   - {fileID: 350657850}
   - {fileID: 1609847309}
+  - {fileID: 1720901452}
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
