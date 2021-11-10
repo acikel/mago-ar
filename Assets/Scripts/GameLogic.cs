@@ -172,16 +172,17 @@ public class GameLogic : MonoBehaviour
             Vector3 position3D = aICamera.WorldToScreenPoint(new Vector3(foodButton.transform.position.x, foodButton.transform.position.y + 1, foodButton.transform.position.z+10));
             Debug.Log("seeing mago3 touch position: "+ touchPos);
             Debug.Log("seeing mago3 button position: " + position3D);
-            
+            Debug.Log("seeing mago3 raycastTouchHit position: " + raycastTouchHit.point);
+
             Vector3 magoPos = new Vector3(mago.transform.position.x, mago.transform.position.y+1, mago.transform.position.z);
             Debug.Log("seeing mago3 magoPos position: " + magoPos);
             touchPos.y = touchPos.y + 1;
             touchPos.z = touchPos.z + 2;
             magoPos.z = magoPos.z + 10;
             //Instantiate(foodGameObject, position3D, Quaternion.identity);
-            Instantiate(foodGameObjectTest, touchPos, Quaternion.identity);
+            //Instantiate(foodGameObjectTest, touchPos, Quaternion.identity);
             Instantiate(foodGameObject, magoPos, Quaternion.identity);
-            //Instantiate(foodGameObjectTest, position3D, Quaternion.identity);
+            Instantiate(foodGameObjectTest, raycastTouchHit.point, Quaternion.identity);
 
         }
     }
