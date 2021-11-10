@@ -125,7 +125,7 @@ public class GameLogic : MonoBehaviour
             timeToSleepCanvas.SetActive(true);
             magoController.SitDown();
         }
-        if(magoIsSleeping && System.DateTime.Now.Hour == (sleepTimeHours+9)%23)
+        if(magoIsSleeping && System.DateTime.Now.Hour == ((sleepTimeHours+9)%23))
         {
             blackScreenCanvas.SetActive(false);
             secondMagoCamera.backgroundColor = magoCameraColor;

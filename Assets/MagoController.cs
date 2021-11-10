@@ -12,7 +12,8 @@ public class MagoController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (apple.activeSelf) apple.SetActive(false);
+        if (brush.activeSelf) brush.SetActive(false);
     }
 
     // Update is called once per frame
