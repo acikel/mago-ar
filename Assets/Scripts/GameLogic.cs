@@ -45,6 +45,8 @@ public class GameLogic : MonoBehaviour
     private Vector3 touchPos;
     private RaycastHit raycastTouchHit;
     private Color magoCameraColor;
+
+    private bool timeToSleepOkButtonClicked;
     // Start is called before the first frame update
     void Start()
     {
@@ -58,6 +60,7 @@ public class GameLogic : MonoBehaviour
         timeToSleepCanvas.SetActive(false);
         sleepTimeCanvas.SetActive(false);
         magoCameraColor = secondMagoCamera.backgroundColor;
+        timeToSleepOkButtonClicked = false;
 
         enableGameUI();
         uiPlaneIsOverlaying = false;
@@ -75,6 +78,7 @@ public class GameLogic : MonoBehaviour
         blackScreenCanvas.SetActive(true);
         secondMagoCamera.backgroundColor = Color.black;
         magoIsSleeping = true;
+        timeToSleepOkButtonClicked = false;
     }
 
     private void AIWasPlaced()
@@ -112,7 +116,7 @@ public class GameLogic : MonoBehaviour
         }
 
         //Debug.Log("Update Method Game Logic1: "+ uiPlaneIsOverlaying);
-        if (!sleepTimeMinutesUI.text.Equals("")&&(System.DateTime.Now.Hour == sleepTimeHours && System.DateTime.Now.Minute == sleepTimeMinutes))
+        if (!timeToSleepOkButtonClicked && !sleepTimeMinutesUI.text.Equals("")&&(System.DateTime.Now.Hour == sleepTimeHours && System.DateTime.Now.Minute == sleepTimeMinutes))
         {
             disableGameUI();
             timeToSleepCanvas.SetActive(true);
@@ -152,6 +156,7 @@ public class GameLogic : MonoBehaviour
     public void timeToSleepOKButton()
     {
         //Debug.Log("OK button clicked");
+        timeToSleepOkButtonClicked = true;
         timeToSleepCanvas.SetActive(false);
         teethBrushingCanvas.SetActive(true);
 
