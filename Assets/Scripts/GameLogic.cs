@@ -199,7 +199,7 @@ public class GameLogic : MonoBehaviour
         teethBrushingCanvas.SetActive(true);
 
         magoController.SitDown();
-        ResetAllTriggers();
+        //ResetAllTriggers();
         magoController.BrushTeeth();
 
     }
