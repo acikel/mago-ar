@@ -118,8 +118,9 @@ public class GameLogic : MonoBehaviour
     private IEnumerator waitThenGetBackToIdleFromEating(int waitForSeconds)
     {
         yield return new WaitForSeconds(waitForSeconds);
-        magoController.EatFood();
         ResetAllTriggers();
+        magoController.EatFood();
+        
     }
     // Update is called once per frame
     void Update()
