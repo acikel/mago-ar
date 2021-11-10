@@ -38,7 +38,7 @@ public class FoodScript : MonoBehaviour
             //newPos.x = worldPos.x;
             // apply new position
             //transform.position = newPos;
-            screenPos.y = screenPos.y + 10;
+            screenPos.y = screenPos.y - 10;
             transform.position = screenPos;
         }
 
