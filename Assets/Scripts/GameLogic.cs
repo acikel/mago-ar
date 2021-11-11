@@ -129,7 +129,7 @@ public class GameLogic : MonoBehaviour
     private IEnumerator waitThenGetBackToIdleFromEating(int waitForSeconds)
     {
         yield return new WaitForSeconds(waitForSeconds);
-        ResetAllTriggers();
+        //ResetAllTriggers();
         agent.enabled = true;
         //magoController.EatFood();
 
