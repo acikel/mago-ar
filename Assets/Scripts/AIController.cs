@@ -57,7 +57,7 @@ public class AIController : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         //searchNewLocation = false;
         currentPlaneMagoIsPositioned = null;
-        StartCoroutine(WaitBeforeSearchingNewPositionCoroutine(10));
+        //StartCoroutine(WaitBeforeSearchingNewPositionCoroutine(10));
         //Debug.Log("Start Method1");
         //StartCoroutine(WaitThenInitializeMago(10));
         //Debug.Log("Start Method2");
@@ -74,7 +74,7 @@ public class AIController : MonoBehaviour
     {
         Debug.Log("update called: "+ agent.remainingDistance + " searchNewLocation: " + searchNewLocation + " GameLogic.uiPlaneIsOverlaying: "+ GameLogic.uiPlaneIsOverlaying);
         //if (!GameLogic.magoIsBeeingFeeded && agent.remainingDistance < 0.1 && searchNewLocation && !GameLogic.uiPlaneIsOverlaying)
-          if (agent.remainingDistance < 0.1 && searchNewLocation && !GameLogic.uiPlaneIsOverlaying)
+          if (searchNewLocation && agent.remainingDistance < 0.1 && !GameLogic.uiPlaneIsOverlaying)
             {
             //Debug.Log("WaitBeforeSearchingNewPositionCoroutine3");
             //Debug.Log("Update Method1");
@@ -340,6 +340,7 @@ public class AIController : MonoBehaviour
                 agent.transform.position = currentPlaneMagoIsPositioned.transform.position;
                 agent.enabled = false;
                 agent.enabled = true;
+                StartCoroutine(WaitBeforeSearchingNewPositionCoroutine(0));
                 //Debug.Log("Initialized plane: " + arPlane.name);
             }
         }
