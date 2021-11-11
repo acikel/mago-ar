@@ -201,7 +201,7 @@ public class GameLogic : MonoBehaviour
         //foodGameObjectUI.SetActive(false);
         ResetAllTriggers();
         magoController.EatFood();
-        StartCoroutine(waitThenGetBackToIdleFromEating(3));
+        StartCoroutine(waitThenGetBackToIdleFromEating(1));
     }
 
 
