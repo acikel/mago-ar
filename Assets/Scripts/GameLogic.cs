@@ -103,6 +103,8 @@ public class GameLogic : MonoBehaviour
         //Debug.Log("Update Method Game Logic4");
         //yield return new WaitForSeconds(waitInSeconds);
         //Debug.Log("Update Method Game Logic5");
+        if (!sleepTimeMinutesUI.text.Equals(""))
+            return;
         sleepTimeMinutesUI.text = "";
         sleepTimeHoursUI.text = "";
         disableGameUI();
