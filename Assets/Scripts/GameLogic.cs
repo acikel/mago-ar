@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
+using UnityEngine.XR.ARFoundation;
 
 public class GameLogic : MonoBehaviour
 {
@@ -55,6 +56,7 @@ public class GameLogic : MonoBehaviour
     public GameObject brushAnimation;
     public GameObject maskAnimation;
 
+    public ARPlaneMeshVisualizer arPlaneClassificationVisualizer;
     private bool timeToSleepOkButtonClicked;
     private bool magoIsSitting;
     // Start is called before the first frame update
@@ -137,9 +139,17 @@ public class GameLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*if (Input.touchCount > 0)
+        if (Input.touchCount > 0)
 
         {
+            foreach (Touch touch in Input.touches)
+            {
+                if (touch.tapCount == 2)
+                {
+                    arPlaneClassificationVisualizer.enabled= !arPlaneClassificationVisualizer.enabled;
+                }
+            }
+            /*
             if (Input.GetTouch(0).phase == TouchPhase.Began)
             {
                 //touchPos = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
@@ -165,11 +175,12 @@ public class GameLogic : MonoBehaviour
                     
                 }
             }
+            */
             //if (Input.GetTouch(0).phase == TouchPhase.Ended && foodGameObjectUI.activeSelf)
             //{
                 
             //}
-        }*/
+        }
 
         //Debug.Log("Update Method Game Logic1: "+ sleepTimeMinutes + " sleepTimeHours: "+ sleepTimeHours + " timeToSleepOkButtonClicked: " + timeToSleepOkButtonClicked + " sleepTimeMinutesUI.text: "+ sleepTimeMinutesUI.text);
         if (!timeToSleepOkButtonClicked && !sleepTimeMinutesUI.text.Equals("")&&(System.DateTime.Now.Hour == sleepTimeHours && System.DateTime.Now.Minute == sleepTimeMinutes))

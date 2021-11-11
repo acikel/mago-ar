@@ -3885,6 +3885,7 @@ MonoBehaviour:
   appleAnimation: {fileID: 204995530}
   brushAnimation: {fileID: 204995529}
   maskAnimation: {fileID: 204995531}
+  arPlaneClassificationVisualizer: {fileID: 114505523171528268, guid: 82568f45e51a3cb4f84ef88143bb3df9, type: 3}
 --- !u!4 &1330025530
 Transform:
   m_ObjectHideFlags: 0
