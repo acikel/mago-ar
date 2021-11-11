@@ -4312,7 +4312,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1760703bbd54c04488a8d10600262ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_PlanePrefab: {fileID: 0}
+  m_PlanePrefab: {fileID: 1568414836858200, guid: 82568f45e51a3cb4f84ef88143bb3df9, type: 3}
   m_DetectionMode: -1
 --- !u!114 &1408130683
 MonoBehaviour:
