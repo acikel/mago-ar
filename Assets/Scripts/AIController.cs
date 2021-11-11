@@ -155,8 +155,8 @@ public class AIController : MonoBehaviour
         //Get random walkable plane
         //int randomIndex = Random.Range(0, listOfARPlanesWithNavmesh.Count);
         //currentPlaneMagoIsPositioned = listOfARPlanesWithNavmesh[randomIndex];
-        //if (currentPlaneMagoIsPositioned == null)
-        //    return;
+        if (currentPlaneMagoIsPositioned == null)
+            return;
 
         
         nexPositionFound = false;
