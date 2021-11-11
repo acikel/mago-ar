@@ -57,7 +57,7 @@ public class AIController : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         //searchNewLocation = false;
         currentPlaneMagoIsPositioned = null;
-        StartCoroutine(WaitBeforeSearchingNewPositionCoroutine(0));
+        StartCoroutine(WaitBeforeSearchingNewPositionCoroutine(10));
         //Debug.Log("Start Method1");
         //StartCoroutine(WaitThenInitializeMago(10));
         //Debug.Log("Start Method2");
