@@ -34,6 +34,7 @@ public class GameLogic : MonoBehaviour
 
     public Button sleepTimeOkButton;
     public Button timeToSleepOkButton;
+    public Button settingsButton;
     public Text timeToSleepText;
     public Text timeToSleepText2;
 
@@ -63,6 +64,7 @@ public class GameLogic : MonoBehaviour
         foodButton.onClick.AddListener(gameUIFoodButton);
         sleepTimeOkButton.onClick.AddListener(sleepTimeOKButton);
         timeToSleepOkButton.onClick.AddListener(timeToSleepOKButton);
+        settingsButton.onClick.AddListener(SettingsWasClicked);
 
         blackScreenCanvas.SetActive(false);
         teethBrushingCanvas.SetActive(false);
@@ -109,6 +111,12 @@ public class GameLogic : MonoBehaviour
         //Debug.Log("Update Method Game Logic6");
     }
 
+    private void SettingsWasClicked()
+    {
+        disableGameUI();
+        sleepTimeCanvas.SetActive(true);
+    }
+
     /*IEnumerator waitThenEnableSleepTime(int waitInSeconds)
     {
        
@@ -128,17 +136,35 @@ public class GameLogic : MonoBehaviour
     {
         if (Input.touchCount > 0)
         {
-            /*if (Input.GetTouch(0).phase == TouchPhase.Began)
+            if (Input.GetTouch(0).phase == TouchPhase.Began)
             {
                 //touchPos = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
                 //touchPos = Input.GetTouch(0).position;
                 touchPos = Input.GetTouch(0).rawPosition;
                 Physics.Raycast(touchPos, aICamera.transform.forward, out raycastTouchHit);
-            }*/
-            if (Input.GetTouch(0).phase == TouchPhase.Ended && foodGameObjectUI.activeSelf)
-            {
-                
+                if (raycastTouchHit.collider.name.Contains("Mago") || raycastTouchHit.collider.name.Equals("AI"))
+                {
+                    if (agent.isActiveAndEnabled)
+                    {
+                        agent.enabled = false;
+                        mago.transform.LookAt(aICamera.transform);
+                        ResetAllTriggers();
+                        magoController.SitDown();
+                    }
+                    else
+                    {
+                        mago.transform.LookAt(aICamera.transform);
+                        agent.enabled = true;
+                        ResetAllTriggers();
+
+                    }
+                    
+                }
             }
+            //if (Input.GetTouch(0).phase == TouchPhase.Ended && foodGameObjectUI.activeSelf)
+            //{
+                
+            //}
         }
 
         //Debug.Log("Update Method Game Logic1: "+ sleepTimeMinutes + " sleepTimeHours: "+ sleepTimeHours + " timeToSleepOkButtonClicked: " + timeToSleepOkButtonClicked + " sleepTimeMinutesUI.text: "+ sleepTimeMinutesUI.text);
@@ -161,7 +187,7 @@ public class GameLogic : MonoBehaviour
             secondMagoCamera.backgroundColor = magoCameraColor;
             magoIsSleeping = false;
 
-            magoController.Sleep();
+            //magoController.Sleep();
             ResetAllTriggers();
             enableGameUI();
         }
@@ -286,8 +312,7 @@ public class GameLogic : MonoBehaviour
 
     private void ResetAllTriggers()
     {
-        appleAnimation.SetActive(false);
-        brushAnimation.SetActive(false);
+        
         foreach (var param in magoAnimator.parameters)
         {
             if (param.type == AnimatorControllerParameterType.Trigger)
@@ -295,6 +320,8 @@ public class GameLogic : MonoBehaviour
                 magoAnimator.ResetTrigger(param.name);
             }
         }
+        appleAnimation.SetActive(false);
+        brushAnimation.SetActive(false);
     }
 
 }
