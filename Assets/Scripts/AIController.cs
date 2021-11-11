@@ -338,6 +338,8 @@ public class AIController : MonoBehaviour
                 }
                 currentPlaneMagoIsPositioned = arPlane;
                 agent.transform.position = currentPlaneMagoIsPositioned.transform.position;
+                agent.enabled = false;
+                agent.enabled = true;
                 //Debug.Log("Initialized plane: " + arPlane.name);
             }
         }
