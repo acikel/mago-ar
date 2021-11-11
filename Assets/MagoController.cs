@@ -19,6 +19,7 @@ public class MagoController : MonoBehaviour
     {
         if (apple.activeSelf) apple.SetActive(false);
         if (brush.activeSelf) brush.SetActive(false);
+        if (brush.activeSelf) sleepyMask.SetActive(false);
     }
 
     // Update is called once per frame
@@ -63,6 +64,7 @@ public class MagoController : MonoBehaviour
     {
         if (apple.activeSelf) apple.SetActive(false);
         if (brush.activeSelf) brush.SetActive(false);
+        if (brush.activeSelf) sleepyMask.SetActive(false);
         myAnimatorController.SetTrigger("triggerRun");
     }
 
@@ -70,12 +72,14 @@ public class MagoController : MonoBehaviour
     {
         if (apple.activeSelf) apple.SetActive(false);
         if (brush.activeSelf) brush.SetActive(false);
+        if (brush.activeSelf) sleepyMask.SetActive(false);
         myAnimatorController.SetTrigger("triggerReadyForFood");
     }
     public void EatFood()
     {
         apple.SetActive(true);
         if (brush.activeSelf) brush.SetActive(false);
+        if (brush.activeSelf) sleepyMask.SetActive(false);
         apple.GetComponent<Animator>().Play("Apple|AppleAction", -1, 0f);
         myAnimatorController.SetTrigger("triggerEat");
     }
@@ -83,6 +87,7 @@ public class MagoController : MonoBehaviour
     public void BrushTeeth()
     {
         if (apple.activeSelf) apple.SetActive(false);
+        if (brush.activeSelf) sleepyMask.SetActive(false);
         if (!brush.activeSelf)
         {
             brush.SetActive(true);
@@ -108,6 +113,7 @@ public class MagoController : MonoBehaviour
     {
         if (apple.activeSelf) apple.SetActive(false);
         if (brush.activeSelf) brush.SetActive(false);
+        if (brush.activeSelf) sleepyMask.SetActive(false);
         myAnimatorController.SetTrigger("triggerSit");
     }
 }

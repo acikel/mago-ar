@@ -53,6 +53,7 @@ public class GameLogic : MonoBehaviour
 
     public GameObject appleAnimation;
     public GameObject brushAnimation;
+    public GameObject maskAnimation;
 
     private bool timeToSleepOkButtonClicked;
     private bool magoIsSitting;
@@ -324,6 +325,7 @@ public class GameLogic : MonoBehaviour
         }
         appleAnimation.SetActive(false);
         brushAnimation.SetActive(false);
+        maskAnimation.SetActive(false);
     }
 
 }
