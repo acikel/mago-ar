@@ -337,7 +337,7 @@ public class AIController : MonoBehaviour
                     //onAIPlacedIntoScene?.Invoke();
                 }
                 currentPlaneMagoIsPositioned = arPlane;
-                transform.position = currentPlaneMagoIsPositioned.transform.position;
+                agent.transform.position = currentPlaneMagoIsPositioned.transform.position;
                 //Debug.Log("Initialized plane: " + arPlane.name);
             }
         }
