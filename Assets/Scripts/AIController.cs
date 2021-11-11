@@ -72,7 +72,7 @@ public class AIController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log("update called: "+ agent.remainingDistance + " searchNewLocation: " + searchNewLocation + " GameLogic.uiPlaneIsOverlaying: "+ GameLogic.uiPlaneIsOverlaying);
+        Debug.Log("update called: "+ agent.remainingDistance + " searchNewLocation: " + searchNewLocation + " GameLogic.uiPlaneIsOverlaying: "+ GameLogic.uiPlaneIsOverlaying);
         //if (!GameLogic.magoIsBeeingFeeded && agent.remainingDistance < 0.1 && searchNewLocation && !GameLogic.uiPlaneIsOverlaying)
           if (agent.remainingDistance < 0.1 && searchNewLocation && !GameLogic.uiPlaneIsOverlaying)
             {
