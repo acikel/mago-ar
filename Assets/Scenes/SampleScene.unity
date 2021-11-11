@@ -1072,6 +1072,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7036474477730854971, guid: f7a64d4e592c71449a7cb7e4d507360e, type: 3}
   m_PrefabInstance: {fileID: 204995524}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &204995531 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6851365587243152091, guid: f7a64d4e592c71449a7cb7e4d507360e, type: 3}
+  m_PrefabInstance: {fileID: 204995524}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &286492314
 GameObject:
   m_ObjectHideFlags: 0
@@ -3875,7 +3880,7 @@ MonoBehaviour:
   magoController: {fileID: 204995525}
   appleAnimation: {fileID: 204995530}
   brushAnimation: {fileID: 204995529}
-  maskAnimation: {fileID: 0}
+  maskAnimation: {fileID: 204995531}
 --- !u!4 &1330025530
 Transform:
   m_ObjectHideFlags: 0
