@@ -137,7 +137,8 @@ public class GameLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.touchCount > 0)
+        /*if (Input.touchCount > 0)
+
         {
             if (Input.GetTouch(0).phase == TouchPhase.Began)
             {
@@ -168,7 +169,7 @@ public class GameLogic : MonoBehaviour
             //{
                 
             //}
-        }
+        }*/
 
         //Debug.Log("Update Method Game Logic1: "+ sleepTimeMinutes + " sleepTimeHours: "+ sleepTimeHours + " timeToSleepOkButtonClicked: " + timeToSleepOkButtonClicked + " sleepTimeMinutesUI.text: "+ sleepTimeMinutesUI.text);
         if (!timeToSleepOkButtonClicked && !sleepTimeMinutesUI.text.Equals("")&&(System.DateTime.Now.Hour == sleepTimeHours && System.DateTime.Now.Minute == sleepTimeMinutes))
